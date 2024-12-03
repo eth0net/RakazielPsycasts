@@ -1,0 +1,12 @@
+# jetbrains junk
+.idea/
+
+# visual studio junk
+.vs/
+
+# dotnet junk
+bin/
+obj/
+
+# macOS junk
+.DS_Store

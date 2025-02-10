@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Defs>
+
+  <!--
+
+    1 Liberation: Caster meditates, gaining extra psi focus for each missing body part (bionics do not count)
+
+    2 Bloodletting: Caster dumps all their Neural Heat and half their blood / HP
+
+    2 Purge: Caster sacrifices body part to remove all infections and diseases from entire body. Can also target others
+
+    2 Feast: Caster sacrifices body part and generates as much meat as entire body.
+
+    2 or 3 Avarice: Caster performs a melee attack (headbutt if need be) and steals one of the parts the caster misses from the target (bionics do not get stolen)
+
+    3 Spite: Ranged attack, inflicts all injuries of the caster, including missing body parts (bionics do not count as missing) on the target, caster's injuries close, but are not removed.
+
+    3 Lure: Ranged utility, Caster sacrifices body part to instantly tame target animal or Anomaly monster (Revenant Coma effects end, Noxiosphere still has time limit). Animals need Animal skill to keep tamed, Anomaly monsters don't. Tames hostile ghouls but they still need meat or turn hostile again. Also works on Wild Men
+
+    3 Homunculus: Caster sacrifices body part and creates random friendly fleshbeast (any fleshbeasts it explodes into are also friendly) - or a new limbless pawn (with Biotech it's a baby and has all limbs)
+
+    3 Haruspex: Caster sacrifices body part and gains double passion in new skill (or upgrades up to two normal passions to double passion if no free skills are left)
+
+    3 Flesh Bond: Ranged utility. Caster tends all wounds of target but gains them as well (already closed)
+
+    Bloodletting unlocks Avarice and Haruspex
+    Feast unlocks Lure and Homunculus
+    Purge unlocks Spite and Flesh Bond
+
+  -->
+
+  <!-- <VFECore.Abilities.AbilityDef -->
+  <!-- *.xml -->
+  <!-- **/v1.1/**,**/v1.2/**,**/v1.3/**,**/v1.4/**,**/1.1/**,**/1.2/**,**/1.3/**,**/1.4/**, -->
+
+  <!-- Liberation -->
+  <!-- VPE_DrainPsyessence, VPE_StealVitality, VPEH_Bloodfocus -->
+  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>RP_Liberation</defName>
+    <label>liberation</label>
+    <description>Caster meditates, gaining extra psi focus for each missing body part (bionics do not count).</description>
+    <iconPath>Abilities/Carnomancer/Liberation</iconPath>
+    <abilityClass>RakazielPsycasts.Carnomancer.Ability_Liberation</abilityClass>
+    <castTime>60</castTime>
+    <showUndrafted>true</showUndrafted>
+    <targetMode>Self</targetMode>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>RP_Carnomancer</path>
+        <level>1</level>
+        <order>1</order>
+        <psyfocusCost>0.02</psyfocusCost>
+        <entropyGain>0</entropyGain>
+      </li>
+      <li Class="VFECore.Abilities.AbilityExtension_Hediff">
+        <hediff>RP_Liberation</hediff>
+      </li>
+    </modExtensions>
+  </VFECore.Abilities.AbilityDef>
+
+  <!-- Bloodletting -->
+  <!-- VPE_NeuralHeatDump -->
+  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>RP_Bloodletting</defName>
+    <label>bloodletting</label>
+    <description>Caster dumps all their neural geat and loses half of their health points.</description>
+    <iconPath>Abilities/Carnomancer/Bloodletting</iconPath>
+    <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>
+    <castTime>60</castTime>
+    <targetMode>Self</targetMode>
+    <fleckOnTarget>PsycastPsychicEffect</fleckOnTarget>
+    <durationTime>60000</durationTime>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>RP_Carnomancer</path>
+        <level>2</level>
+        <order>1</order>
+        <psyfocusCost>0.08</psyfocusCost>
+        <entropyGain>0</entropyGain>
+      </li>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_TransferEntropy">
+        <targetReceivesEntropy>true</targetReceivesEntropy>
+      </li>
+    </modExtensions>
+  </VFECore.Abilities.AbilityDef>
+
+  <!-- Purge -->
+  <!-- VPE_RegrowLimbs -->
+  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>RP_Purge</defName>
+    <label>purge</label>
+    <description>Caster sacrifices a body part from the target to remove all infections and diseases from the target's entire body.</description>
+    <iconPath>Abilities/Carnomancer/Purge</iconPath>
+    <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>
+    <castTime>120</castTime>
+    <durationTime>60000</durationTime>
+    <jobDef>VFEA_GotoTargetAndUseAbility</jobDef>
+    <requireLineOfSight>false</requireLineOfSight>
+    <targetMode>Pawn</targetMode>
+    <targetingParameters>
+      <canTargetSelf>true</canTargetSelf>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetBuildings>false</canTargetBuildings>
+      <canTargetMechs>false</canTargetMechs>
+      <canTargetMutants>false</canTargetMutants>
+    </targetingParameters>
+    <range>999999</range>
+    <distanceToTarget>1.5</distanceToTarget>
+    <castSound>VPE_RegrowLimbs_Cast</castSound>
+    <chance>0</chance>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>RP_Carnomancer</path>
+        <level>2</level>
+        <order>2</order>
+        <psyfocusCost>0.7</psyfocusCost>
+        <entropyGain>0</entropyGain>
+      </li>
+    </modExtensions>
+  </VFECore.Abilities.AbilityDef>
+
+  <!-- Feast -->
+  <!-- MRPGP_Transmute -->
+  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>RP_Feast</defName>
+    <label>feast</label>
+    <description>Caster sacrifices body part and generates as much meat as entire body.</description>
+    <iconPath>Abilities/Carnomancer/Feast</iconPath>
+    <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>
+    <jobDef>VFEA_GotoTargetAndUseAbility</jobDef>
+    <requireLineOfSight>false</requireLineOfSight>
+    <range>999999</range>
+    <distanceToTarget>2.9</distanceToTarget>
+    <targetMode>Self</targetMode>
+    <castTime>360</castTime>
+    <needsTicking>true</needsTicking>
+    <showUndrafted>true</showUndrafted>
+    <chance>0</chance>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>RP_Carnomancer</path>
+        <level>2</level>
+        <order>3</order>
+        <psyfocusCost>0.24</psyfocusCost>
+        <entropyGain>40</entropyGain>
+      </li>
+      <li Class="MoreRPGPsycasts.Common.AbilityExtension_SpawnItem">
+        <item>Meat</item>
+        <count>10</count>
+      </li>
+      <li Class="VFECore.Abilities.AbilityExtension_FleckOnTarget">
+        <fleckDefs>
+          <li>PsycastSkipInnerExit</li>
+          <li>PsycastSkipOuterRingExit</li>
+        </fleckDefs>
+        <scale>0.42</scale>
+        <sound>Psycast_Skip_Exit</sound>
+        <preCastTicks>10</preCastTicks>
+      </li>
+      <li Class="VFECore.Abilities.AbilityExtension_EffecterOnTarget">
+        <effecterDef>Skip_Exit</effecterDef>
+        <maintainForTicks>60</maintainForTicks>
+        <scale>0.42</scale>
+      </li>
+    </modExtensions>
+  </VFECore.Abilities.AbilityDef>
+
+  <!-- Avarice -->
+  <!-- AAVPE_Skewer -->
+  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>RP_Avarice</defName>
+    <label>avarice</label>
+    <description>Caster performs a melee attack and steals one of the parts the caster misses from the target (bionics do not get stolen).</description>
+    <iconPath>Abilities/Carnomancer/Avarice</iconPath>
+    <abilityClass>AlphaBehavioursAndEvents.Ability_Melee</abilityClass>
+    <targetMode>Pawn</targetMode>
+    <range>1.9</range>
+    <targetingParameters>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetSelf>false</canTargetSelf>
+      <canTargetAnimals>false</canTargetAnimals>
+      <canTargetBuildings>false</canTargetBuildings>
+      <canTargetMechs>false</canTargetMechs>
+    </targetingParameters>
+    <castTime>10</castTime>
+    <cooldownTime>1000</cooldownTime>
+    <castSound>AA_SkewerPsycast</castSound>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>AAVPE_Ravager</path>
+        <level>3</level>
+        <order>1</order>
+        <psyfocusCost>0.1</psyfocusCost>
+        <entropyGain>50</entropyGain>
+        <prerequisites>
+          <li>RP_Bloodletting</li>
+        </prerequisites>
+      </li>
+      <li Class="AlphaBehavioursAndEvents.Ability_Damage_Extension">
+        <damageDef>Stab</damageDef>
+        <damage>30</damage>
+        <armourPen>.9</armourPen>
+        <teleport>false</teleport>
+        <repeatAmount>1</repeatAmount>
+        <bodyPart>Torso</bodyPart>
+        <mote>AA_Skewer</mote>
+        <moteFailed>AA_SkewerFailed</moteFailed>
+      </li>
+    </modExtensions>
+  </VFECore.Abilities.AbilityDef>
+
+  <!-- Spite -->
+  <!-- VPEH_SanguineSpear -->
+  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>RP_Spite</defName>
+    <label>spite</label>
+    <description>Ranged attack, inflicts all injuries of the caster, including missing body parts (bionics do not count as missing) on the target, caster's injuries close, but are not removed.</description>
+    <iconPath>Abilities/Carnomancer/Spite</iconPath>
+    <abilityClass>VPEHemosage.Ability_SanguineSpear</abilityClass>
+    <requireLineOfSight>false</requireLineOfSight>
+    <castTime>45</castTime>
+    <range>52.9</range>
+    <radius>1.9</radius>
+    <targetMode>Location</targetMode>
+    <castSound>VPEH_SanguineSpear_Cast</castSound>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>VPEH_Hemosage</path>
+        <level>3</level>
+        <order>2</order>
+        <psyfocusCost>0.04</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>RP_Purge</li>
+        </prerequisites>
+      </li>
+      <li Class="VFECore.Abilities.AbilityExtension_Projectile">
+        <projectile>VPEH_SanguineSpear</projectile>
+      </li>
+    </modExtensions>
+  </VFECore.Abilities.AbilityDef>
+
+  <!-- Lure -->
+  <!-- 3 Lure:  -->
+  <!-- Feast unlocks Lure and Homunculus -->
+  <VFECore.Abilities.AbilityDef ParentName="VPE_WordOfAbilityBase">
+    <defName>RP_Lure</defName>
+    <label>lure</label>
+    <description>Ranged utility, Caster sacrifices body part to instantly tame target animal or Anomaly monster (Revenant Coma effects end, Noxiosphere still has time limit). Animals need Animal skill to keep tamed, Anomaly monsters don't. Tames hostile ghouls but they still need meat or turn hostile again. Also works on Wild Men.</description>
+    <iconPath>Abilities/Wildspeaker/WordofAnimals</iconPath>
+    <abilityClass>VanillaPsycastsExpanded.Wildspeaker.Ability_Animal</abilityClass>
+    <castSound>PsychicSoothePulserCast</castSound>
+    <distanceToTarget>6.9</distanceToTarget>
+    <showUndrafted>true</showUndrafted>
+    <goodwillImpact>-15</goodwillImpact>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>VPE_Wildspeaker</path>
+        <level>3</level>
+        <order>2</order>
+        <psyfocusCost>0.4</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>VPE_CropBurst</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VFECore.Abilities.AbilityDef>
+
+  <!-- Haruspex -->
+  <!-- 3 Haruspex: Caster sacrifices body part and gains double passion in new skill (or upgrades up to two normal passions to double passion if no free skills are left) -->
+  <!-- Bloodletting unlocks Avarice and Haruspex -->
+
+  <!-- Flesh Bond -->
+  <!-- 3 Flesh Bond: Ranged utility. Caster tends all wounds of target but gains them as well (already closed) -->
+  <!-- Purge unlocks Spite and Flesh Bond -->
+
+  <!-- Homunculus -->
+  <!-- 3 Homunculus: Caster sacrifices body part and creates random friendly fleshbeast (any fleshbeasts it explodes into are also friendly) - or a new limbless pawn (with Biotech it's a baby and has all limbs) -->
+  <!-- Feast unlocks Lure and Homunculus -->
+
+
+</Defs>

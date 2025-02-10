@@ -7,13 +7,52 @@
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <OutputPath>..\Assemblies\</OutputPath>
         <DebugType>none</DebugType>
+        <IsMac Condition="'$(RuntimeIdentifier)' == 'osx-x64' Or '$(RuntimeIdentifier)' == 'osx-arm64'">true</IsMac>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
         <DebugSymbols>false</DebugSymbols>
     </PropertyGroup>
-    <ItemGroup>
+    <ItemGroup Condition="'$(IsMac)' == 'true'">
+        <Reference Include="Assembly-CSharp">
+            <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine">
+            <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.CoreModule">
+            <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
         <Reference Include="VFECore">
             <HintPath>..\..\..\..\..\..\workshop\content\294100\2023507013\1.5\Assemblies\VFECore.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="VanillaPsycastsExpanded">
+            <HintPath>..\..\..\..\..\..\workshop\content\294100\2842502659\1.5\Assemblies\VanillaPsycastsExpanded.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup Condition="'$(IsMac)' != 'true'">
+        <Reference Include="Assembly-CSharp">
+            <HintPath>..\..\..\..\Contents\Resources\Data\Managed\Assembly-CSharp.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine">
+            <HintPath>..\..\..\..\Contents\Resources\Data\Managed\UnityEngine.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.CoreModule">
+            <HintPath>..\..\..\..\Contents\Resources\Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="VFECore">
+            <HintPath>..\..\..\..\..\..\..\workshop\content\294100\2023507013\1.5\Assemblies\VFECore.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="VanillaPsycastsExpanded">
+            <HintPath>..\..\..\..\..\..\..\workshop\content\294100\2842502659\1.5\Assemblies\VanillaPsycastsExpanded.dll</HintPath>
             <Private>False</Private>
         </Reference>
     </ItemGroup>

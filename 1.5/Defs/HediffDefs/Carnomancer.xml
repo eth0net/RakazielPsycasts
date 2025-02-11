@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+    <HediffDef ParentName="PsycastHediffBase">
+        <defName>RP_Liberation</defName>
+        <label>liberation</label>
+        <description>Rapidly regenerating psyfocus at the cost of body parts.</description>
+        <hediffClass>RakazielPsycasts.Hediff_Liberation</hediffClass>
+    </HediffDef>
+
+</Defs>

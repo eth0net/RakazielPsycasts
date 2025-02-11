@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Defs>
 
-  <VanillaPsycastsExpanded.PsycasterPathDef>
-    <defName>RP_Carnomancer</defName>
-    <label>carnomancer</label>
-    <description>Carnomancer path is focused on providing flesh-based powers.</description>
-    <background>UI/Backgrounds/CarnomancerPath</background>
-    <altBackground>UI/AlternativeBackgrounds/PathBG_Carnomancer</altBackground>
-    <tab>Psycasts</tab>
-    <tooltip>Carnomancers are powerful psycasters, capable of shaping the flesh of those around them. They use their gifts to ...</tooltip>
-  </VanillaPsycastsExpanded.PsycasterPathDef>
+    <VanillaPsycastsExpanded.PsycasterPathDef>
+        <defName>RP_Carnomancer</defName>
+        <label>carnomancer</label>
+        <description>Carnomancer path is focused on providing flesh-based powers.</description>
+        <background>UI/Backgrounds/CarnomancerPath</background>
+        <altBackground>UI/AlternativeBackgrounds/PathBG_Carnomancer</altBackground>
+        <tab>Psycasts</tab>
+        <tooltip>Carnomancers are powerful psycasters, capable of shaping the flesh of those around them. They use their gifts to ...</tooltip>
+    </VanillaPsycastsExpanded.PsycasterPathDef>
 
 </Defs>

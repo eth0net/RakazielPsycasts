@@ -168,105 +168,91 @@
 
     <!-- Avarice -->
     <!-- AAVPE_Skewer -->
-<!--    <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">-->
-<!--        <defName>RP_Avarice</defName>-->
-<!--        <label>avarice</label>-->
-<!--        <description>Caster performs a melee attack and steals one of the parts the caster misses from the target (bionics do not get stolen).</description>-->
-<!--        <iconPath>Abilities/Carnomancer/Resurrect</iconPath>-->
-<!--        <abilityClass>AlphaBehavioursAndEvents.Ability_Melee</abilityClass>-->
-<!--        <targetMode>Pawn</targetMode>-->
-<!--        <range>1.9</range>-->
-<!--        <targetingParameters>-->
-<!--            <canTargetPawns>true</canTargetPawns>-->
-<!--            <canTargetSelf>false</canTargetSelf>-->
-<!--            <canTargetAnimals>false</canTargetAnimals>-->
-<!--            <canTargetBuildings>false</canTargetBuildings>-->
-<!--            <canTargetMechs>false</canTargetMechs>-->
-<!--        </targetingParameters>-->
-<!--        <castTime>10</castTime>-->
-<!--        <cooldownTime>1000</cooldownTime>-->
+    <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+        <defName>RP_Avarice</defName>
+        <label>avarice</label>
+        <description>Caster performs a melee attack and steals one of the parts the caster misses from the target (bionics do not get stolen).</description>
+        <iconPath>Abilities/Carnomancer/Resurrect</iconPath>
+        <abilityClass>RakazielPsycasts.Ability_Avarice</abilityClass>
+        <targetMode>Pawn</targetMode>
+        <range>1.9</range>
+        <targetingParameters>
+            <canTargetPawns>true</canTargetPawns>
+            <canTargetSelf>false</canTargetSelf>
+            <canTargetAnimals>false</canTargetAnimals>
+            <canTargetBuildings>false</canTargetBuildings>
+            <canTargetMechs>false</canTargetMechs>
+        </targetingParameters>
+        <castTime>10</castTime>
+        <cooldownTime>1000</cooldownTime>
 <!--        <castSound>AA_SkewerPsycast</castSound>-->
-<!--        <modExtensions>-->
-<!--            <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">-->
-<!--                <path>AAVPE_Ravager</path>-->
-<!--                <level>3</level>-->
-<!--                <order>1</order>-->
-<!--                <psyfocusCost>0.1</psyfocusCost>-->
-<!--                <entropyGain>50</entropyGain>-->
-<!--                <prerequisites>-->
-<!--                    <li>RP_Bloodletting</li>-->
-<!--                </prerequisites>-->
-<!--            </li>-->
-<!--            <li Class="AlphaBehavioursAndEvents.Ability_Damage_Extension">-->
-<!--                <damageDef>Stab</damageDef>-->
-<!--                <damage>30</damage>-->
-<!--                <armourPen>.9</armourPen>-->
-<!--                <teleport>false</teleport>-->
-<!--                <repeatAmount>1</repeatAmount>-->
-<!--                <bodyPart>Torso</bodyPart>-->
-<!--                <mote>AA_Skewer</mote>-->
-<!--                <moteFailed>AA_SkewerFailed</moteFailed>-->
-<!--            </li>-->
-<!--        </modExtensions>-->
-<!--    </VFECore.Abilities.AbilityDef>-->
+        <modExtensions>
+            <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+                <path>RP_Carnomancer</path>
+                <level>3</level>
+                <order>1</order>
+                <psyfocusCost>0.1</psyfocusCost>
+                <entropyGain>50</entropyGain>
+                <prerequisites>
+                    <li>RP_Bloodletting</li>
+                </prerequisites>
+            </li>
+        </modExtensions>
+    </VFECore.Abilities.AbilityDef>
 
     <!-- Spite -->
     <!-- VPEH_SanguineSpear -->
-<!--    <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">-->
-<!--        <defName>RP_Spite</defName>-->
-<!--        <label>spite</label>-->
-<!--        <description>Ranged attack, inflicts all injuries of the caster, including missing body parts (bionics do not count as missing) on the target, caster's injuries close, but are not removed.</description>-->
-<!--        <iconPath>Abilities/Carnomancer/Resurrect</iconPath>-->
-<!--        <abilityClass>VPEHemosage.Ability_SanguineSpear</abilityClass>-->
-<!--        <requireLineOfSight>false</requireLineOfSight>-->
-<!--        <castTime>45</castTime>-->
-<!--        <range>52.9</range>-->
-<!--        <radius>1.9</radius>-->
-<!--        <targetMode>Location</targetMode>-->
+    <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+        <defName>RP_Spite</defName>
+        <label>spite</label>
+        <description>Ranged attack, inflicts all injuries of the caster, including missing body parts (bionics do not count as missing) on the target, caster's injuries close, but are not removed.</description>
+        <iconPath>Abilities/Carnomancer/Resurrect</iconPath>
+        <abilityClass>RakazielPsycasts.Ability_Spite</abilityClass>
+        <requireLineOfSight>false</requireLineOfSight>
+        <castTime>45</castTime>
+        <range>52.9</range>
+        <radius>1.9</radius>
+        <targetMode>Location</targetMode>
 <!--        <castSound>VPEH_SanguineSpear_Cast</castSound>-->
-<!--        <modExtensions>-->
-<!--            <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">-->
-<!--                <path>VPEH_Hemosage</path>-->
-<!--                <level>3</level>-->
-<!--                <order>2</order>-->
-<!--                <psyfocusCost>0.04</psyfocusCost>-->
-<!--                <entropyGain>0</entropyGain>-->
-<!--                <prerequisites>-->
-<!--                    <li>RP_Purge</li>-->
-<!--                </prerequisites>-->
-<!--            </li>-->
-<!--            <li Class="VFECore.Abilities.AbilityExtension_Projectile">-->
-<!--                <projectile>VPEH_SanguineSpear</projectile>-->
-<!--            </li>-->
-<!--        </modExtensions>-->
-<!--    </VFECore.Abilities.AbilityDef>-->
+        <modExtensions>
+            <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+                <path>RP_Carnomancer</path>
+                <level>3</level>
+                <order>2</order>
+                <psyfocusCost>0.04</psyfocusCost>
+                <entropyGain>0</entropyGain>
+                <prerequisites>
+                    <li>RP_Purge</li>
+                </prerequisites>
+            </li>
+        </modExtensions>
+    </VFECore.Abilities.AbilityDef>
 
     <!-- Lure -->
-    <!-- 3 Lure:  -->
     <!-- Feast unlocks Lure and Homunculus -->
-<!--    <VFECore.Abilities.AbilityDef ParentName="VPE_WordOfAbilityBase">-->
-<!--        <defName>RP_Lure</defName>-->
-<!--        <label>lure</label>-->
-<!--        <description>Ranged utility, Caster sacrifices body part to instantly tame target animal or Anomaly monster (Revenant Coma effects end, Noxiosphere still has time limit). Animals need Animal skill to keep tamed, Anomaly monsters don't. Tames hostile ghouls but they still need meat or turn hostile again. Also works on Wild Men.</description>-->
-<!--        <iconPath>Abilities/Wildspeaker/WordofAnimals</iconPath>-->
-<!--        <abilityClass>VanillaPsycastsExpanded.Wildspeaker.Ability_Animal</abilityClass>-->
-<!--        <castSound>PsychicSoothePulserCast</castSound>-->
-<!--        <distanceToTarget>6.9</distanceToTarget>-->
-<!--        <showUndrafted>true</showUndrafted>-->
-<!--        <goodwillImpact>-15</goodwillImpact>-->
-<!--        <modExtensions>-->
-<!--            <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">-->
-<!--                <path>VPE_Wildspeaker</path>-->
-<!--                <level>3</level>-->
-<!--                <order>2</order>-->
-<!--                <psyfocusCost>0.4</psyfocusCost>-->
-<!--                <entropyGain>0</entropyGain>-->
-<!--                <prerequisites>-->
-<!--                    <li>VPE_CropBurst</li>-->
-<!--                </prerequisites>-->
-<!--            </li>-->
-<!--        </modExtensions>-->
-<!--    </VFECore.Abilities.AbilityDef>-->
+    <VFECore.Abilities.AbilityDef ParentName="VPE_WordOfAbilityBase">
+        <defName>RP_Lure</defName>
+        <label>lure</label>
+        <description>Ranged utility, Caster sacrifices body part to instantly tame target animal or Anomaly monster (Revenant Coma effects end, Noxiosphere still has time limit). Animals need Animal skill to keep tamed, Anomaly monsters don't. Tames hostile ghouls but they still need meat or turn hostile again. Also works on Wild Men.</description>
+        <iconPath>Abilities/Wildspeaker/WordofAnimals</iconPath>
+        <abilityClass>RakazielPsycasts.Ability_Lure</abilityClass>
+        <castSound>PsychicSoothePulserCast</castSound>
+        <distanceToTarget>6.9</distanceToTarget>
+        <showUndrafted>true</showUndrafted>
+        <goodwillImpact>-15</goodwillImpact>
+        <modExtensions>
+            <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+                <path>RP_Carnomancer</path>
+                <level>3</level>
+                <order>2</order>
+                <psyfocusCost>0.4</psyfocusCost>
+                <entropyGain>0</entropyGain>
+                <prerequisites>
+                    <li>RP_Feast</li>
+                </prerequisites>
+            </li>
+        </modExtensions>
+    </VFECore.Abilities.AbilityDef>
 
     <!-- Haruspex -->
     <!-- 3 Haruspex: Caster sacrifices body part and gains double passion in new skill (or upgrades up to two normal passions to double passion if no free skills are left) -->

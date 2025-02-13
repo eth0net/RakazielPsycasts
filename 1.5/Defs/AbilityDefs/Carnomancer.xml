@@ -185,7 +185,7 @@
         </targetingParameters>
         <castTime>10</castTime>
         <cooldownTime>1000</cooldownTime>
-<!--        <castSound>AA_SkewerPsycast</castSound>-->
+        <!--        <castSound>AA_SkewerPsycast</castSound>-->
         <modExtensions>
             <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
                 <path>RP_Carnomancer</path>
@@ -213,7 +213,7 @@
         <range>52.9</range>
         <radius>1.9</radius>
         <targetMode>Location</targetMode>
-<!--        <castSound>VPEH_SanguineSpear_Cast</castSound>-->
+        <!--        <castSound>VPEH_SanguineSpear_Cast</castSound>-->
         <modExtensions>
             <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
                 <path>RP_Carnomancer</path>
@@ -255,16 +255,86 @@
     </VFECore.Abilities.AbilityDef>
 
     <!-- Haruspex -->
-    <!-- 3 Haruspex: Caster sacrifices body part and gains double passion in new skill (or upgrades up to two normal passions to double passion if no free skills are left) -->
     <!-- Bloodletting unlocks Avarice and Haruspex -->
+    <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+        <defName>RP_Haruspex</defName>
+        <label>haruspex</label>
+        <description>Caster sacrifices body part and gains double passion in new skill (or upgrades up to two normal passions to double passion if no free skills are left).</description>
+        <iconPath>Abilities/Carnomancer/Resurrect</iconPath>
+        <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>
+        <castTime>60</castTime>
+        <durationTime>60000</durationTime>
+        <jobDef>VFEA_GotoTargetAndUseAbility</jobDef>
+        <requireLineOfSight>false</requireLineOfSight>
+        <targetMode>Self</targetMode>
+        <modExtensions>
+            <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+                <path>RP_Carnomancer</path>
+                <level>4</level>
+                <order>0</order>
+                <psyfocusCost>0.6</psyfocusCost>
+                <entropyGain>0</entropyGain>
+                <prerequisites>
+                    <li>RP_Bloodletting</li>
+                </prerequisites>
+            </li>
+            <li Class="RakazielPsycasts.AbilityExtension_Haruspex"/>
+        </modExtensions>
+    </VFECore.Abilities.AbilityDef>
 
     <!-- Flesh Bond -->
     <!-- 3 Flesh Bond: Ranged utility. Caster tends all wounds of target but gains them as well (already closed) -->
     <!-- Purge unlocks Spite and Flesh Bond -->
+    <VFECore.Abilities.AbilityDef ParentName="VPE_WordOfAbilityBase">
+        <defName>RP_FleshBond</defName>
+        <label>flesh bond</label>
+        <description>Ranged utility. Caster tends all wounds of target but gains them as well (already closed).</description>
+        <iconPath>Abilities/Carnomancer/FleshBond</iconPath>
+        <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>
+        <castSound>PsychicSoothePulserCast</castSound>
+        <distanceToTarget>6.9</distanceToTarget>
+        <showUndrafted>true</showUndrafted>
+        <goodwillImpact>-15</goodwillImpact>
+        <modExtensions>
+            <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+                <path>RP_Carnomancer</path>
+                <level>4</level>
+                <order>1</order>
+                <psyfocusCost>0.4</psyfocusCost>
+                <entropyGain>0</entropyGain>
+                <prerequisites>
+                    <li>RP_Purge</li>
+                </prerequisites>
+            </li>
+            <li Class="RakazielPsycasts.AbilityExtension_FleshBond"/>
+        </modExtensions>
+    </VFECore.Abilities.AbilityDef>
 
     <!-- Homunculus -->
     <!-- 3 Homunculus: Caster sacrifices body part and creates random friendly fleshbeast (any fleshbeasts it explodes into are also friendly) - or a new limbless pawn (with Biotech it's a baby and has all limbs) -->
     <!-- Feast unlocks Lure and Homunculus -->
-
-
+    <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+        <defName>RP_Homunculus</defName>
+        <label>homunculus</label>
+        <description>Caster sacrifices body part and creates random friendly fleshbeast (any fleshbeasts it explodes into are also friendly) - or a new limbless pawn (with Biotech it's a baby and has all limbs).</description>
+        <iconPath>Abilities/Carnomancer/Homunculus</iconPath>
+        <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>
+        <castSound>PsychicSoothePulserCast</castSound>
+        <distanceToTarget>6.9</distanceToTarget>
+        <showUndrafted>true</showUndrafted>
+        <goodwillImpact>-15</goodwillImpact>
+        <modExtensions>
+            <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+                <path>RP_Carnomancer</path>
+                <level>4</level>
+                <order>2</order>
+                <psyfocusCost>0.4</psyfocusCost>
+                <entropyGain>0</entropyGain>
+                <prerequisites>
+                    <li>RP_Feast</li>
+                </prerequisites>
+            </li>
+            <li Class="RakazielPsycasts.0"/>
+        </modExtensions>
+    </VFECore.Abilities.AbilityDef>
 </Defs>

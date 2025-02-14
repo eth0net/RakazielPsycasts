@@ -29,25 +29,37 @@ public class AbilityExtension_Homunculus : AbilityExtension_AbilityMod
 
             pawn.health.AddHediff(HediffDefOf.MissingBodyPart, pawn.health.hediffSet.GetNotMissingParts().RandomElement());
 
+            Pawn pawnToSpawn;
+
             // if the player has anomaly dlc, create a fleshbeast
-            if (ModLister.HasActiveModWithName("Anomaly"))
+            if (ModsConfig.AnomalyActive)
             {
-                Pawn fleshbeast = PawnGenerator.GeneratePawn(PawnKindDef.Named("Fleshbeast"), pawn.Faction);
-                fleshbeast.Name = new NameSingle("Fleshbeast");
+                PawnKindDef kind = FleshbeastUtility.AllFleshbeasts.RandomElement();
+                pawnToSpawn = PawnGenerator.GeneratePawn(new PawnGenerationRequest(kind, pawn.Faction, fixedBiologicalAge: 0f, fixedChronologicalAge: 0f));
+                CompInspectStringEmergence compInspectStringEmergence = pawnToSpawn.TryGetComp<CompInspectStringEmergence>();
+                if (compInspectStringEmergence != null)
+                {
+                    compInspectStringEmergence.sourcePawn = pawn;
+                }
             }
-            // if the player has biotech dlc, create a limbless baby
-            else if (ModLister.HasActiveModWithName("Biotech"))
+            // if the player has biotech dlc, create a baby
+            else if (ModsConfig.BiotechActive)
             {
-                Pawn baby = PawnGenerator.GeneratePawn(PawnKindDef.Named("Baby"), pawn.Faction);
-                baby.Name = new NameSingle("Baby");
-                baby.health.AddHediff(HediffDefOf.MissingBodyPart, baby.health.hediffSet.GetNotMissingParts().RandomElement());
+                pawnToSpawn = PawnGenerator.GeneratePawn(new PawnGenerationRequest(pawn.kindDef, pawn.Faction, developmentalStages: DevelopmentalStage.Newborn));
             }
             // if the player has neither dlc, create a limbless pawn
             else
             {
-                Pawn limblessPawn = PawnGenerator.GeneratePawn(PawnKindDef.Named("LimblessPawn"), pawn.Faction);
-                limblessPawn.Name = new NameSingle("LimblessPawn");
-                limblessPawn.health.AddHediff(HediffDefOf.MissingBodyPart, limblessPawn.health.hediffSet.GetNotMissingParts().RandomElement());
+                pawnToSpawn = PawnGenerator.GeneratePawn(pawn.kindDef, pawn.Faction);
+                foreach (BodyPartRecord part in pawnToSpawn.health.hediffSet.GetNotMissingParts())
+                {
+                    pawnToSpawn.health.AddHediff(HediffDefOf.MissingBodyPart, part);
+                }
+            }
+
+            if (pawnToSpawn != null)
+            {
+                GenSpawn.Spawn(pawnToSpawn, pawn.Position, pawn.Map);
             }
         }
     }

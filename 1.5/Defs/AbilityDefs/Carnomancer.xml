@@ -174,6 +174,7 @@
         <description>Caster performs a melee attack and steals one of the parts the caster misses from the target (bionics do not get stolen).</description>
         <iconPath>Abilities/Carnomancer/Resurrect</iconPath>
         <abilityClass>RakazielPsycasts.Ability_Avarice</abilityClass>
+        <jobDef>VFEA_GotoTargetAndUseAbility</jobDef>
         <targetMode>Pawn</targetMode>
         <range>1.9</range>
         <targetingParameters>
@@ -212,7 +213,15 @@
         <castTime>45</castTime>
         <range>52.9</range>
         <radius>1.9</radius>
-        <targetMode>Location</targetMode>
+        <jobDef>VFEA_GotoTargetAndUseAbility</jobDef>
+        <targetMode>Pawn</targetMode>
+        <targetingParameters>
+            <canTargetPawns>true</canTargetPawns>
+            <canTargetSelf>false</canTargetSelf>
+            <canTargetAnimals>false</canTargetAnimals>
+            <canTargetBuildings>false</canTargetBuildings>
+            <canTargetMechs>false</canTargetMechs>
+        </targetingParameters>
         <!--        <castSound>VPEH_SanguineSpear_Cast</castSound>-->
         <modExtensions>
             <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
@@ -234,8 +243,9 @@
         <defName>RP_Lure</defName>
         <label>lure</label>
         <description>Ranged utility, Caster sacrifices body part to instantly tame target animal or Anomaly monster (Revenant Coma effects end, Noxiosphere still has time limit). Animals need Animal skill to keep tamed, Anomaly monsters don't. Tames hostile ghouls but they still need meat or turn hostile again. Also works on Wild Men.</description>
-        <iconPath>Abilities/Wildspeaker/WordofAnimals</iconPath>
+        <iconPath>Abilities/Carnomancer/Resurrect</iconPath>
         <abilityClass>RakazielPsycasts.Ability_Lure</abilityClass>
+        <jobDef>VFEA_GotoTargetAndUseAbility</jobDef>
         <castSound>PsychicSoothePulserCast</castSound>
         <distanceToTarget>6.9</distanceToTarget>
         <showUndrafted>true</showUndrafted>
@@ -264,14 +274,12 @@
         <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>
         <castTime>60</castTime>
         <durationTime>60000</durationTime>
-        <jobDef>VFEA_GotoTargetAndUseAbility</jobDef>
-        <requireLineOfSight>false</requireLineOfSight>
         <targetMode>Self</targetMode>
         <modExtensions>
             <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
                 <path>RP_Carnomancer</path>
                 <level>4</level>
-                <order>0</order>
+                <order>1</order>
                 <psyfocusCost>0.6</psyfocusCost>
                 <entropyGain>0</entropyGain>
                 <prerequisites>
@@ -285,21 +293,33 @@
     <!-- Flesh Bond -->
     <!-- 3 Flesh Bond: Ranged utility. Caster tends all wounds of target but gains them as well (already closed) -->
     <!-- Purge unlocks Spite and Flesh Bond -->
-    <VFECore.Abilities.AbilityDef ParentName="VPE_WordOfAbilityBase">
+    <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
         <defName>RP_FleshBond</defName>
         <label>flesh bond</label>
         <description>Ranged utility. Caster tends all wounds of target but gains them as well (already closed).</description>
-        <iconPath>Abilities/Carnomancer/FleshBond</iconPath>
+        <iconPath>Abilities/Carnomancer/Resurrect</iconPath>
         <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>
+        <castTime>120</castTime>
+        <durationTime>60000</durationTime>
         <castSound>PsychicSoothePulserCast</castSound>
         <distanceToTarget>6.9</distanceToTarget>
         <showUndrafted>true</showUndrafted>
-        <goodwillImpact>-15</goodwillImpact>
+<!--        <goodwillImpact>-15</goodwillImpact>-->
+        <jobDef>VFEA_GotoTargetAndUseAbility</jobDef>
+        <requireLineOfSight>false</requireLineOfSight>
+        <targetMode>Pawn</targetMode>
+        <targetingParameters>
+            <canTargetPawns>true</canTargetPawns>
+            <canTargetSelf>false</canTargetSelf>
+            <canTargetAnimals>false</canTargetAnimals>
+            <canTargetBuildings>false</canTargetBuildings>
+            <canTargetMechs>false</canTargetMechs>
+        </targetingParameters>
         <modExtensions>
             <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
                 <path>RP_Carnomancer</path>
                 <level>4</level>
-                <order>1</order>
+                <order>2</order>
                 <psyfocusCost>0.4</psyfocusCost>
                 <entropyGain>0</entropyGain>
                 <prerequisites>
@@ -317,7 +337,7 @@
         <defName>RP_Homunculus</defName>
         <label>homunculus</label>
         <description>Caster sacrifices body part and creates random friendly fleshbeast (any fleshbeasts it explodes into are also friendly) - or a new limbless pawn (with Biotech it's a baby and has all limbs).</description>
-        <iconPath>Abilities/Carnomancer/Homunculus</iconPath>
+        <iconPath>Abilities/Carnomancer/Resurrect</iconPath>
         <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>
         <castSound>PsychicSoothePulserCast</castSound>
         <distanceToTarget>6.9</distanceToTarget>
@@ -327,14 +347,14 @@
             <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
                 <path>RP_Carnomancer</path>
                 <level>4</level>
-                <order>2</order>
+                <order>3</order>
                 <psyfocusCost>0.4</psyfocusCost>
                 <entropyGain>0</entropyGain>
                 <prerequisites>
                     <li>RP_Feast</li>
                 </prerequisites>
             </li>
-            <li Class="RakazielPsycasts.0"/>
+            <li Class="RakazielPsycasts.AbilityExtension_Homunculus"/>
         </modExtensions>
     </VFECore.Abilities.AbilityDef>
 </Defs>

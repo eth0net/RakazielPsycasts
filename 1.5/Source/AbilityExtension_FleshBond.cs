@@ -19,14 +19,6 @@ public class AbilityExtension_FleshBond : AbilityExtension_AbilityMod
                 continue;
             }
 
-            // if the pawn has no body parts, skip casting
-            if (!pawn.health.hediffSet.GetNotMissingParts().Any())
-            {
-                continue;
-            }
-
-            pawn.health.AddHediff(HediffDefOf.MissingBodyPart, pawn.health.hediffSet.GetNotMissingParts().RandomElement());
-
             // tend targets' wounds and caster gains all wounds from target, already tended
             List<Hediff_Injury> injuries = [];
             pawn.health.hediffSet.GetHediffs(ref injuries);

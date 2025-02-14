@@ -33,7 +33,7 @@ public class Ability_Avarice : Ability
             BodyPartRecord partToSteal = partsToSteal.RandomElement();
 
             // remove the part from the target
-            targetPawn.TakeDamage(new DamageInfo(DamageDefOf.SurgicalCut, 9999, 0, -1, pawn));
+            targetPawn.health.AddHediff(HediffDefOf.MissingBodyPart, partToSteal);
 
             // add the part to the caster
             pawn.health.RestorePart(partToSteal);

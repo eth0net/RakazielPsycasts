@@ -135,7 +135,6 @@
         <distanceToTarget>2.9</distanceToTarget>
         <targetMode>Self</targetMode>
         <castTime>360</castTime>
-        <needsTicking>true</needsTicking>
         <showUndrafted>true</showUndrafted>
         <chance>0</chance>
         <modExtensions>
@@ -176,7 +175,7 @@
         <abilityClass>RakazielPsycasts.Ability_Avarice</abilityClass>
         <jobDef>VFEA_GotoTargetAndUseAbility</jobDef>
         <targetMode>Pawn</targetMode>
-        <range>1.9</range>
+        <range>99999</range>
         <targetingParameters>
             <canTargetPawns>true</canTargetPawns>
             <canTargetSelf>false</canTargetSelf>
@@ -209,12 +208,13 @@
         <description>Ranged attack, inflicts all injuries of the caster, including missing body parts (bionics do not count as missing) on the target, caster's injuries close, but are not removed.</description>
         <iconPath>Abilities/Carnomancer/Resurrect</iconPath>
         <abilityClass>RakazielPsycasts.Ability_Spite</abilityClass>
+        <jobDef>VFEA_GotoTargetAndUseAbility</jobDef>
+        <range>999999</range>
+        <distanceToTarget>2.9</distanceToTarget>
         <requireLineOfSight>false</requireLineOfSight>
         <castTime>45</castTime>
-        <range>52.9</range>
-        <radius>1.9</radius>
-        <jobDef>VFEA_GotoTargetAndUseAbility</jobDef>
         <targetMode>Pawn</targetMode>
+        <showUndrafted>true</showUndrafted>
         <targetingParameters>
             <canTargetPawns>true</canTargetPawns>
             <canTargetSelf>false</canTargetSelf>
@@ -291,7 +291,6 @@
     </VFECore.Abilities.AbilityDef>
 
     <!-- Flesh Bond -->
-    <!-- 3 Flesh Bond: Ranged utility. Caster tends all wounds of target but gains them as well (already closed) -->
     <!-- Purge unlocks Spite and Flesh Bond -->
     <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
         <defName>RP_FleshBond</defName>
@@ -301,8 +300,6 @@
         <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>
         <castTime>120</castTime>
         <durationTime>60000</durationTime>
-        <castSound>PsychicSoothePulserCast</castSound>
-        <distanceToTarget>6.9</distanceToTarget>
         <showUndrafted>true</showUndrafted>
 <!--        <goodwillImpact>-15</goodwillImpact>-->
         <jobDef>VFEA_GotoTargetAndUseAbility</jobDef>
@@ -315,6 +312,10 @@
             <canTargetBuildings>false</canTargetBuildings>
             <canTargetMechs>false</canTargetMechs>
         </targetingParameters>
+        <range>999999</range>
+        <distanceToTarget>1.5</distanceToTarget>
+        <castSound>VPE_RegrowLimbs_Cast</castSound>
+        <chance>0</chance>
         <modExtensions>
             <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
                 <path>RP_Carnomancer</path>
@@ -331,7 +332,6 @@
     </VFECore.Abilities.AbilityDef>
 
     <!-- Homunculus -->
-    <!-- 3 Homunculus: Caster sacrifices body part and creates random friendly fleshbeast (any fleshbeasts it explodes into are also friendly) - or a new limbless pawn (with Biotech it's a baby and has all limbs) -->
     <!-- Feast unlocks Lure and Homunculus -->
     <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
         <defName>RP_Homunculus</defName>

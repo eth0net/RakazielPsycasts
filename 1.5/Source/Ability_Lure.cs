@@ -25,12 +25,12 @@ public class Ability_Lure : Ability
                 case false when !isManhunter:
                     pawn.mindState.mentalStateHandler.TryStartMentalState(
                         MentalStateDefOf.Manhunter, "AnimalManhunterFromTaming".Translate(),
-                        forced: true, forceWake: false, causedByMood: false, null,
-                        transitionSilently: false, causedByDamage: false, causedByPsycast: true
+                        true, false, false, null,
+                        false, false, true
                     );
                     break;
                 case true when isManhunter: pawn.MentalState.RecoverFromState(); break;
-                case true: InteractionWorker_RecruitAttempt.DoRecruit(base.pawn, pawn); break;
+                case true: InteractionWorker_RecruitAttempt.DoRecruit(pawn, pawn); break;
             }
         }
     }

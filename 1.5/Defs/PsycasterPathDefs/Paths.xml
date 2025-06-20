@@ -8,7 +8,7 @@
         <background>UI/Backgrounds/CarnomancerPath</background>
         <altBackground>UI/AlternativeBackgrounds/PathBG_Carnomancer</altBackground>
         <tab>Psycasts</tab>
-        <tooltip>Carnomancers are powerful psycasters, capable of shaping the flesh of those around them. They use their gifts to ...</tooltip>
+        <tooltip>Carnomancers are powerful psycasters, capable of shaping the flesh of those around them.</tooltip>
     </VanillaPsycastsExpanded.PsycasterPathDef>
 
     <VanillaPsycastsExpanded.PsycasterPathDef>
@@ -18,7 +18,7 @@
         <background>UI/Backgrounds/FloramancerPath</background>
         <altBackground>UI/AlternativeBackgrounds/PathBG_Floramancer</altBackground>
         <tab>Psycasts</tab>
-        <tooltip>Floramancers are powerful psycasters, capable of shaping the flesh of those around them. They use their gifts to ...</tooltip>
+        <tooltip>Floramancers are powerful psycasters, capable of shaping the natural world around them.</tooltip>
     </VanillaPsycastsExpanded.PsycasterPathDef>
 
 </Defs>

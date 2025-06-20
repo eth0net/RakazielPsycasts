@@ -20,6 +20,7 @@ ij_editorconfig_space_before_comma = false
 ij_editorconfig_spaces_around_assignment_operators = true
 
 [*.xml]
+indent_size = 2
 max_line_length = 999
 ij_xml_align_attributes = true
 ij_xml_align_text = false

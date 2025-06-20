@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <!--
+
+        Floramancer (Tribal Only)  requires Biotech, Ideology and VRE Pythokin
+
+        1 Transform Crop - transforms crops and trees into other crops, keeps growth time.
+
+        2 Frugality - transforms wood into simple vegetarian meals - if it targets a stack, transforms the entire stack.
+
+        2 Transform Tree - transforms crops and trees into other trees, keeps growth time.
+
+        3 Awaken Dryad (requires Transform Tree) - transforms tree into Ideology dryad (using the Ideology dryad menu so any other dryads are automatically patched in) . The dryad is bound to the caster - we could use code from VRE Pythokin and the VPE Puppeteer - but is otherwise a normal dryad (merging into Unbound Dryads with Vanilla Ideology Expanded included)
+
+        4 Branching Mind (requires Awaken Dryad) - works like VPE Puppeteer, creating more dryad slots
+
+        4 Awaken Tree (requires Awaken Dryad) - turns any of the special trees (Anima, Gauranlen, Tox) into their respective VRE Pythokin type - and turns the Pythokin type (or more precisely anyone with their type specific genes) back into the tree (while keeping all their data with Cryptocasket logic, for when they are transformed back)
+
+        5 Reincarnation (requires Branching Mind) - transforms a corpse into a dryad, keeping the old data with Cryptocasket logic. 60 days later, the dryad can transform into the original being. The cryptocasket data gets deleted if the dryad gets killed or merges into an Unbound Dryad.
+
+        5 One with the Forest (Requires Branching Mind) - merges with a tree and can teleport to any other tree on the map. Teleports to the next tree in the scene asset list if its current tree is destroyed. Can leave at will. Jumps have a flat cost regardless of range.
+
+        5 Force of Nature (requires Awaken Tree) - melee attack, instakills anything technological. When used against someone organic, it destroys all their bionics.
+
+        5 Sacred Grove (requires Awaken Tree) - force field upgrade for tree (slow charge, high max value, can tap for focus
+
+        Force of Nature treats the Desolator golems as technological
+
+
+
+        The transform casts, are these random or from a menu like the dryad one?
+        The transform casts would use the crop and tree planting menus (so any mods that apply to those apply to the psicast)
+
+        For the tree merge / teleporting, are you thinking the being vanishes but clicking on the tree brings up a gizmo button at the bottom to move the merged being and detach them?
+        Tree merge would work like the GLA tunnels from C&C Generals - the psicast would target trees and if a tree is clicked on sends the caster running towards that tree and have him merge on contact with that tree. It at least one pawn is merged with a tree, you can click any tree on the map and open a menu with all currently merged pawns, then click on the portrait (within the menu) to deploy that pawn from this tree - if the last tree on the map dies all pawns still in it die as well. Pawns would not bleed while part of the tree and would slowly heal (like in a non-hospital bed)
+
+        For Sacred Grove, is that a cast per tree to add a shield or like AoE on a group of trees? Or something else?
+        Sacred Grove creates an AoE shield centered on the specific tree you cast it on. The shield would slowly charge itself but if completely destroyed it would take the tree with it, leaving only a stump. Any friendly psicaster in direct contact can remove stored charge from the shield to gain psifocus, or can spend their own psifocus to increase the charge of the shield. If the tree is destroyed, the shield is destroyed as well.
+
+
+
+        Come of think of it, other trees of the same species within the AoE could receive a linkable. Each of them increases the charge rate of the shield but if the shield they are linked to is destroyed, the linked trees are destroyed as well.
+        The shield would work against ranged attacks and block enemy psicasts (if that is mechanically possible - essentialy the cursor would do damage to the shield proportional to the energy cost of the psi cast (psifocus and neural heat) instead of triggering its psicast effect) but would not block melee opponents
+
+
+        I think the best approach to the Sacred Grove linkables is that once you have the central tree, it has the ability (when clicked) to link to any tree within its shield (by clicking on that tree) regardless of species. However, it costs a bit of shield energy to link to a new tree (the amount is recovered within a day but it is dangerous to link to new trees mid-battle). Each new linked tree would also slightly increase the radius of the shield. That way the player can freely decide how many shields they have and which trees are for linking and which trees are for wood
+
+
+        linking might be simpler if you tie it to a location (using the geothermal powerplant code) - it checks if a tree is there and then creates an object that serves as the shield generator or linkable - simply a graphical sparkle effect placed on the tree. Spawning static objects was in the Runemaster psicast.
+        difficulty is how to use the tree's HP for the object - maybe with an on-death effect (like the psychic scream when felling Anima Trees) that destroys this object in that square
+
+
+        with a separate object like that it could be coded as a turret (ID wise) so that it gets attacked by raiders
+        but how to make them fell the tree instead?
+
+        Most things like that work based on ThingComps added to buildings, rather than building-specific code, just to help with reusing it for other things (like mods or new dlc buildings) - I'll have to check turrets for sure but I suspect there will be something I could add to the tree to make it a raider target
+
+        even better 🙂
+        I just realized something - Thrumbos eat trees and the special trees (Anima etc.) have special code now so they do not get eaten. The central tree (shield generator) of the Sacred Grove should have it, too - but NOT the linkables so players have to stay vigilant
+
+    -->
+
+</Defs>

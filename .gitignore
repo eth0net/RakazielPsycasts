@@ -7,6 +7,12 @@
 # dotnet junk
 bin/
 obj/
+*.DotSettings.user
 
 # macOS junk
 .DS_Store
+
+# build files
+Release/
+*.pdb
+*.zip

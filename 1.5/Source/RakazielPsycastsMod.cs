@@ -21,7 +21,6 @@ public class RakazielPsycasts : Mod
     public RakazielPsycasts(ModContentPack content) : base(content)
     {
         settings = GetSettings<RakazielPsycastsSettings>();
-        new Harmony("eth0net.RakazielPsycasts").PatchAll();
     }
 
     /// <summary>

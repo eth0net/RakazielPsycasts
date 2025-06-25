@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
   <!--
@@ -64,20 +64,28 @@
     <defName>RP_TransformCrop</defName>
     <label>transform crop</label>
     <description>Caster transforms crops and trees into other crops. Growing progress is preserved.</description>
-    <iconPath>Abilities/Floramancer/TransformCrop</iconPath>
+    <!-- <iconPath>Abilities/Floramancer/TransformCrop</iconPath> -->
+    <iconPath>Abilities/Carnomancer/Resurrect</iconPath>
     <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>
     <castTime>60</castTime>
     <durationTime>300</durationTime>
     <showUndrafted>true</showUndrafted>
     <targetMode>Thing</targetMode>
-    <targetingParameters>
-      <canTargetItems>false</canTargetItems>
-      <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
-      <thingCategory>Plant</thingCategory>
-      <canTargetLocations>false</canTargetLocations>
-      <canTargetPawns>false</canTargetPawns>
-      <canTargetBuildings>false</canTargetBuildings>
-    </targetingParameters>
+     <targetingParameters>
+    <!-- <canTargetPawns>false</canTargetPawns>-->
+    <!-- <canTargetBuildings>false</canTargetBuildings>-->
+    <!-- <canTargetAnimals>false</canTargetAnimals>-->
+    <!-- <canTargetHumans>false</canTargetHumans>-->
+    <!-- <canTargetMechs>false</canTargetMechs>-->
+     <canTargetPlants>true</canTargetPlants>
+    <!-- <canTargetMutants>false</canTargetMutants>-->
+    <!-- <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable> -->
+     <thingCategory>Plant</thingCategory>
+     </targetingParameters>
+    <jobDef>VFEA_GotoTargetAndUseAbility</jobDef>
+    <requireLineOfSight>false</requireLineOfSight>
+    <range>999999</range>
+    <distanceToTarget>1.9</distanceToTarget>
     <modExtensions>
       <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
         <path>RP_Floramancer</path>
@@ -87,61 +95,70 @@
         <entropyGain>0</entropyGain>
       </li>
       <li Class="RakazielPsycasts.AbilityExtension_TransformPlant">
-        <type>Crop</type>
+        <transformToTree>false</transformToTree>
       </li>
     </modExtensions>
   </VFECore.Abilities.AbilityDef>
 
   <!-- 2 Frugality - transforms wood into simple vegetarian meals - if it targets a stack, transforms the entire stack. -->
-  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-    <defName>RP_TransformTree</defName>
-    <label>transform tree</label>
-    <description>Caster transforms wood into simple vegetarian meals.</description>
-    <iconPath>Abilities/Floramancer/Frugality</iconPath>
-    <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>
-    <castTime>60</castTime>
-    <durationTime>300</durationTime>
-    <showUndrafted>true</showUndrafted>
-    <targetMode>Thing</targetMode>
-    <targetingParameters>
-      <canTargetItems>true</canTargetItems>
-      <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
-      <thingCategory>Wood</thingCategory>
-      <canTargetLocations>false</canTargetLocations>
-      <canTargetPawns>false</canTargetPawns>
-      <canTargetBuildings>false</canTargetBuildings>
-    </targetingParameters>
-    <modExtensions>
-      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-        <path>RP_Floramancer</path>
-        <level>2</level>
-        <order>2</order>
-        <psyfocusCost>0.02</psyfocusCost>
-        <entropyGain>0</entropyGain>
-      </li>
-      <li Class="RakazielPsycasts.AbilityExtension_Frugality" />
-    </modExtensions>
-  </VFECore.Abilities.AbilityDef>
+  <!--  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">-->
+  <!--    <defName>RP_TransformTree</defName>-->
+  <!--    <label>transform tree</label>-->
+  <!--    <description>Caster transforms wood into simple vegetarian meals.</description>-->
+  <!--    <iconPath>Abilities/Floramancer/Frugality</iconPath>-->
+  <!--  <iconPath>Abilities/Carnomancer/Resurrect</iconPath>-->
+  <!--    <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>-->
+  <!--    <castTime>60</castTime>-->
+  <!--    <durationTime>300</durationTime>-->
+  <!--    <showUndrafted>true</showUndrafted>-->
+  <!--    <targetMode>Thing</targetMode>-->
+  <!--    <targetingParameters>-->
+  <!--      <canTargetItems>true</canTargetItems>-->
+  <!--      <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>-->
+  <!--      <thingCategory>Wood</thingCategory>-->
+  <!--      <canTargetLocations>false</canTargetLocations>-->
+  <!--      <canTargetPawns>false</canTargetPawns>-->
+  <!--      <canTargetBuildings>false</canTargetBuildings>-->
+  <!--    </targetingParameters>-->
+  <!--    <modExtensions>-->
+  <!--      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">-->
+  <!--        <path>RP_Floramancer</path>-->
+  <!--        <level>2</level>-->
+  <!--        <order>2</order>-->
+  <!--        <psyfocusCost>0.02</psyfocusCost>-->
+  <!--        <entropyGain>0</entropyGain>-->
+  <!--      </li>-->
+  <!--      <li Class="RakazielPsycasts.AbilityExtension_Frugality" />-->
+  <!--    </modExtensions>-->
+  <!--  </VFECore.Abilities.AbilityDef>-->
 
   <!-- 2 Transform Tree - transforms crops and trees into other trees, keeps growth time. -->
   <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
     <defName>RP_TransformTree</defName>
     <label>transform tree</label>
     <description>Caster transforms crops and trees into other trees. Growing progress is preserved.</description>
-    <iconPath>Abilities/Floramancer/TransformTree</iconPath>
+    <!--    <iconPath>Abilities/Floramancer/TransformTree</iconPath>-->
+    <iconPath>Abilities/Carnomancer/Resurrect</iconPath>
     <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>
     <castTime>60</castTime>
     <durationTime>300</durationTime>
     <showUndrafted>true</showUndrafted>
     <targetMode>Thing</targetMode>
-    <targetingParameters>
-      <canTargetItems>false</canTargetItems>
-      <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
-      <thingCategory>Plant</thingCategory>
-      <canTargetLocations>false</canTargetLocations>
-      <canTargetPawns>false</canTargetPawns>
-      <canTargetBuildings>false</canTargetBuildings>
-    </targetingParameters>
+     <targetingParameters>
+    <!-- <canTargetPawns>false</canTargetPawns>-->
+    <!-- <canTargetBuildings>false</canTargetBuildings>-->
+    <!-- <canTargetAnimals>false</canTargetAnimals>-->
+    <!-- <canTargetHumans>false</canTargetHumans>-->
+    <!-- <canTargetMechs>false</canTargetMechs>-->
+     <canTargetPlants>true</canTargetPlants>
+    <!-- <canTargetMutants>false</canTargetMutants>-->
+    <!-- <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable> -->
+     <thingCategory>Plant</thingCategory>
+     </targetingParameters>
+    <jobDef>VFEA_GotoTargetAndUseAbility</jobDef>
+    <requireLineOfSight>false</requireLineOfSight>
+    <range>999999</range>
+    <distanceToTarget>1.9</distanceToTarget>
     <modExtensions>
       <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
         <path>RP_Floramancer</path>
@@ -151,107 +168,110 @@
         <entropyGain>0</entropyGain>
       </li>
       <li Class="RakazielPsycasts.AbilityExtension_TransformPlant">
-        <type>Tree</type>
+        <transformToTree>true</transformToTree>
       </li>
     </modExtensions>
   </VFECore.Abilities.AbilityDef>
 
   <!-- 3 Awaken Dryad (requires Transform Tree) - transforms tree into Ideology dryad (using the Ideology dryad menu so any other dryads are automatically patched in) . The dryad is bound to the caster - we could use code from VRE Pythokin and the VPE Puppeteer - but is otherwise a normal dryad (merging into Unbound Dryads with Vanilla Ideology Expanded included) -->
-  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-    <defName>RP_AwakenDryad</defName>
-    <label>awaken dryad</label>
-    <description>Caster awakens a tree to produce a new dryad bound to them.</description>
-    <iconPath>Abilities/Floramancer/AwakenDryad</iconPath>
-    <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>
-    <castTime>60</castTime>
-    <durationTime>300</durationTime>
-    <showUndrafted>true</showUndrafted>
-    <targetMode>Thing</targetMode>
-    <targetingParameters>
-      <canTargetItems>false</canTargetItems>
-      <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
-      <thingCategory>Plant</thingCategory>
-      <canTargetLocations>false</canTargetLocations>
-      <canTargetPawns>false</canTargetPawns>
-      <canTargetBuildings>false</canTargetBuildings>
-    </targetingParameters>
-    <modExtensions>
-      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-        <path>RP_Floramancer</path>
-        <level>3</level>
-        <order>1</order>
-        <psyfocusCost>0.02</psyfocusCost>
-        <entropyGain>0</entropyGain>
-      </li>
-      <li Class="RakazielPsycasts.AbilityExtension_AwakenDryad" />
-    </modExtensions>
-  </VFECore.Abilities.AbilityDef>
+  <!--  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">-->
+  <!--    <defName>RP_AwakenDryad</defName>-->
+  <!--    <label>awaken dryad</label>-->
+  <!--    <description>Caster awakens a tree to produce a new dryad bound to them.</description>-->
+  <!--    <iconPath>Abilities/Floramancer/AwakenDryad</iconPath>-->
+  <!--  <iconPath>Abilities/Carnomancer/Resurrect</iconPath>-->
+  <!--    <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>-->
+  <!--    <castTime>60</castTime>-->
+  <!--    <durationTime>300</durationTime>-->
+  <!--    <showUndrafted>true</showUndrafted>-->
+  <!--    <targetMode>Thing</targetMode>-->
+  <!--    <targetingParameters>-->
+  <!--      <canTargetItems>false</canTargetItems>-->
+  <!--      <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>-->
+  <!--      <thingCategory>Plant</thingCategory>-->
+  <!--      <canTargetLocations>false</canTargetLocations>-->
+  <!--      <canTargetPawns>false</canTargetPawns>-->
+  <!--      <canTargetBuildings>false</canTargetBuildings>-->
+  <!--    </targetingParameters>-->
+  <!--    <modExtensions>-->
+  <!--      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">-->
+  <!--        <path>RP_Floramancer</path>-->
+  <!--        <level>3</level>-->
+  <!--        <order>1</order>-->
+  <!--        <psyfocusCost>0.02</psyfocusCost>-->
+  <!--        <entropyGain>0</entropyGain>-->
+  <!--      </li>-->
+  <!--      <li Class="RakazielPsycasts.AbilityExtension_AwakenDryad" />-->
+  <!--    </modExtensions>-->
+  <!--  </VFECore.Abilities.AbilityDef>-->
 
   <!-- 4 Branching Mind (requires Awaken Dryad) - works like VPE Puppeteer, creating more dryad slots -->
 
   <!-- 4 Awaken Tree (requires Awaken Dryad) - turns any of the special trees (Anima, Gauranlen, Tox) into their respective VRE Pythokin type - and turns the Pythokin type (or more precisely anyone with their type specific genes) back into the tree (while keeping all their data with Cryptocasket logic, for when they are transformed back) -->
-  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-    <defName>RP_AwakenTree</defName>
-    <label>awaken tree</label>
-    <description>Caster awakens a powerful tree to produce a new Phytokin. This ability may also be used to transform a Phytokin-like pawn into a tree, preserving them to be awakened later.</description>
-    <iconPath>Abilities/Floramancer/AwakenTree</iconPath>
-    <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>
-    <castTime>60</castTime>
-    <durationTime>300</durationTime>
-    <showUndrafted>true</showUndrafted>
-    <targetMode>Thing</targetMode>
-    <targetingParameters>
-      <canTargetItems>false</canTargetItems>
-      <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
-      <thingCategory>Plant</thingCategory>
-      <canTargetLocations>false</canTargetLocations>
-      <canTargetPawns>true</canTargetPawns>
-      <canTargetBuildings>false</canTargetBuildings>
-    </targetingParameters>
-    <modExtensions>
-      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-        <path>RP_Floramancer</path>
-        <level>3</level>
-        <order>1</order>
-        <psyfocusCost>0.02</psyfocusCost>
-        <entropyGain>0</entropyGain>
-      </li>
-      <li Class="RakazielPsycasts.AbilityExtension_AwakenTree" />
-    </modExtensions>
-  </VFECore.Abilities.AbilityDef>
+  <!--  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">-->
+  <!--    <defName>RP_AwakenTree</defName>-->
+  <!--    <label>awaken tree</label>-->
+  <!--    <description>Caster awakens a powerful tree to produce a new Phytokin. This ability may also be used to transform a Phytokin-like pawn into a tree, preserving them to be awakened later.</description>-->
+  <!--    <iconPath>Abilities/Floramancer/AwakenTree</iconPath>-->
+  <!--  <iconPath>Abilities/Carnomancer/Resurrect</iconPath>-->
+  <!--    <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>-->
+  <!--    <castTime>60</castTime>-->
+  <!--    <durationTime>300</durationTime>-->
+  <!--    <showUndrafted>true</showUndrafted>-->
+  <!--    <targetMode>Thing</targetMode>-->
+  <!--    <targetingParameters>-->
+  <!--      <canTargetItems>false</canTargetItems>-->
+  <!--      <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>-->
+  <!--      <thingCategory>Plant</thingCategory>-->
+  <!--      <canTargetLocations>false</canTargetLocations>-->
+  <!--      <canTargetPawns>true</canTargetPawns>-->
+  <!--      <canTargetBuildings>false</canTargetBuildings>-->
+  <!--    </targetingParameters>-->
+  <!--    <modExtensions>-->
+  <!--      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">-->
+  <!--        <path>RP_Floramancer</path>-->
+  <!--        <level>3</level>-->
+  <!--        <order>1</order>-->
+  <!--        <psyfocusCost>0.02</psyfocusCost>-->
+  <!--        <entropyGain>0</entropyGain>-->
+  <!--      </li>-->
+  <!--      <li Class="RakazielPsycasts.AbilityExtension_AwakenTree" />-->
+  <!--    </modExtensions>-->
+  <!--  </VFECore.Abilities.AbilityDef>-->
 
   <!-- 5 Reincarnation (requires Branching Mind) - transforms a corpse into a dryad, keeping the old data with Cryptocasket logic. 60 days later, the dryad can transform into the original being. The cryptocasket data gets deleted if the dryad gets killed or merges into an Unbound Dryad. -->
-  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
-    <defName>RP_Reincarnation</defName>
-    <label>reincarnation</label>
-    <description>Caster transforms a corpse into a dryad, starting the process of reincarnating the original being. If the dryad lives for 60 days the original being will return to life. If the dryad dies or becomes unbound the life is released and lost.</description>
-    <iconPath>Abilities/Floramancer/Reincarnation</iconPath>
-    <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>
-    <castTime>60</castTime>
-    <durationTime>300</durationTime>
-    <showUndrafted>true</showUndrafted>
-    <targetMode>Thing</targetMode>
-    <targetingParameters>
-      <canTargetItems>false</canTargetItems>
-      <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
-      <thingCategory>Plant</thingCategory>
-      <canTargetLocations>false</canTargetLocations>
-      <canTargetPawns>true</canTargetPawns>
-      <canTargetBuildings>false</canTargetBuildings>
-    </targetingParameters>
-    <modExtensions>
-      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
-        <path>RP_Floramancer</path>
-        <level>3</level>
-        <order>1</order>
-        <psyfocusCost>0.02</psyfocusCost>
-        <entropyGain>0</entropyGain>
-      </li>
-      <li Class="RakazielPsycasts.AbilityExtension_Reincarnation">
-        <countdown>3600000</countdown>
-      </li>
-    </modExtensions>
-  </VFECore.Abilities.AbilityDef>
+  <!--  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">-->
+  <!--    <defName>RP_Reincarnation</defName>-->
+  <!--    <label>reincarnation</label>-->
+  <!--    <description>Caster transforms a corpse into a dryad, starting the process of reincarnating the original being. If the dryad lives for 60 days the original being will return to life. If the dryad dies or becomes unbound the life is released and lost.</description>-->
+  <!--    <iconPath>Abilities/Floramancer/Reincarnation</iconPath>-->
+  <!--  <iconPath>Abilities/Carnomancer/Resurrect</iconPath>-->
+  <!--    <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>-->
+  <!--    <castTime>60</castTime>-->
+  <!--    <durationTime>300</durationTime>-->
+  <!--    <showUndrafted>true</showUndrafted>-->
+  <!--    <targetMode>Thing</targetMode>-->
+  <!--    <targetingParameters>-->
+  <!--      <canTargetItems>false</canTargetItems>-->
+  <!--      <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>-->
+  <!--      <thingCategory>Plant</thingCategory>-->
+  <!--      <canTargetLocations>false</canTargetLocations>-->
+  <!--      <canTargetPawns>true</canTargetPawns>-->
+  <!--      <canTargetBuildings>false</canTargetBuildings>-->
+  <!--    </targetingParameters>-->
+  <!--    <modExtensions>-->
+  <!--      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">-->
+  <!--        <path>RP_Floramancer</path>-->
+  <!--        <level>3</level>-->
+  <!--        <order>1</order>-->
+  <!--        <psyfocusCost>0.02</psyfocusCost>-->
+  <!--        <entropyGain>0</entropyGain>-->
+  <!--      </li>-->
+  <!--      <li Class="RakazielPsycasts.AbilityExtension_Reincarnation">-->
+  <!--        <countdown>3600000</countdown>-->
+  <!--      </li>-->
+  <!--    </modExtensions>-->
+  <!--  </VFECore.Abilities.AbilityDef>-->
 
   <!-- 5 One with the Forest (Requires Branching Mind) - merges with a tree and can teleport to any other tree on the map. Teleports to the next tree in the scene asset list if its current tree is destroyed. Can leave at will. Jumps have a flat cost regardless of range. -->
 

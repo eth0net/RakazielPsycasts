@@ -1,7 +1,7 @@
 ﻿using Verse;
 using VFECore.Abilities;
 
-namespace RakazielPsycasts;
+namespace RakazielPsycasts.Carnomancer;
 
 public class Ability_Liberation : Ability
 {

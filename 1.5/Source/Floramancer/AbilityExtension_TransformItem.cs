@@ -6,7 +6,7 @@ using Verse;
 using VFECore.Abilities;
 using Ability = VFECore.Abilities.Ability;
 
-namespace RakazielPsycasts;
+namespace RakazielPsycasts.Floramancer;
 
 public class AbilityExtension_TransformItem : AbilityExtension_AbilityMod
 {

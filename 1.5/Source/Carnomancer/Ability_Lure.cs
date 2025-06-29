@@ -3,7 +3,7 @@ using RimWorld.Planet;
 using Verse;
 using Ability = VFECore.Abilities.Ability;
 
-namespace RakazielPsycasts;
+namespace RakazielPsycasts.Carnomancer;
 
 public class Ability_Lure : Ability
 {

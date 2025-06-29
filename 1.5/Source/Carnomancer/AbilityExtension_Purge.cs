@@ -3,7 +3,7 @@ using RimWorld.Planet;
 using Verse;
 using VFECore.Abilities;
 
-namespace RakazielPsycasts;
+namespace RakazielPsycasts.Carnomancer;
 
 public class AbilityExtension_Purge : AbilityExtension_AbilityMod
 {

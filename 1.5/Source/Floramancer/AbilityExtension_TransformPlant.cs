@@ -6,21 +6,24 @@ using Verse;
 using VFECore.Abilities;
 using Ability = VFECore.Abilities.Ability;
 
-namespace RakazielPsycasts;
+namespace RakazielPsycasts.Floramancer;
 
 public class AbilityExtension_TransformPlant : AbilityExtension_AbilityMod
 {
-    // If true, transforms the plant (crop or tree) into a tree; otherwise, transforms it into a crop.
-    public bool transformToTree = false;
-
     // If true, allows wild plants to be produced; otherwise, only cultivated plants can be produced.
     public bool allowWildPlants = true;
+
+    // If true, transforms the plant (crop or tree) into a tree; otherwise, transforms it into a crop.
+    public bool transformToTree = false;
 
     public override void Cast(GlobalTargetInfo[] targets, Ability ability)
     {
         base.Cast(targets, ability);
 
-        if (targets == null || targets.Length == 0) return;
+        if (targets == null || targets.Length == 0)
+        {
+            return;
+        }
 
         List<FloatMenuOption> list = [];
         foreach (ThingDef plantDef in ValidPlants(targets))
@@ -45,7 +48,7 @@ public class AbilityExtension_TransformPlant : AbilityExtension_AbilityMod
                             targetPlant.Destroy();
                             GenSpawn.Spawn(plant, cell, map);
                         }
-                    }, plantDef, null, forceBasicStyle: false, MenuOptionPriority.Default, null, null, 29f,
+                    }, plantDef, null, false, MenuOptionPriority.Default, null, null, 29f,
                     rect => Widgets.InfoCardButton(rect.x + 5f, rect.y + (rect.height - 24f) / 2f, plantDef)
                 )
             );
@@ -57,7 +60,10 @@ public class AbilityExtension_TransformPlant : AbilityExtension_AbilityMod
             return;
         }
 
-        if (list.Any()) Find.WindowStack.Add(new FloatMenu(list));
+        if (list.Any())
+        {
+            Find.WindowStack.Add(new FloatMenu(list));
+        }
     }
 
     public override bool Valid(GlobalTargetInfo[] targets, Ability ability, bool throwMessages = false)
@@ -118,10 +124,14 @@ public class AbilityExtension_TransformPlant : AbilityExtension_AbilityMod
     )
     {
         if (plantDef.category != ThingCategory.Plant || !c.InBounds(map))
+        {
             return false;
+        }
 
         if (map.fertilityGrid.FertilityAt(c) < (double) plantDef.plant.fertilityMin)
+        {
             return false;
+        }
 
         if (plantDef.plant.pollution == Pollution.CleanOnly && c.IsPolluted(map) ||
             plantDef.plant.pollution == Pollution.PollutedOnly && !c.IsPolluted(map))
@@ -129,12 +139,19 @@ public class AbilityExtension_TransformPlant : AbilityExtension_AbilityMod
             return false;
         }
 
-        if (plantDef.passability != Traversability.Impassable) return true;
+        if (plantDef.passability != Traversability.Impassable)
+        {
+            return true;
+        }
 
         foreach (IntVec3 adjCell in GenAdj.CardinalDirections.Select(dir => c + dir).Where(adjCell => adjCell.InBounds(map)))
         {
             Building edifice = adjCell.GetEdifice(map);
-            if (edifice?.def.IsDoor != true) continue;
+            if (edifice?.def.IsDoor != true)
+            {
+                continue;
+            }
+
             return false;
         }
 
@@ -145,9 +162,15 @@ public class AbilityExtension_TransformPlant : AbilityExtension_AbilityMod
     {
         List<ResearchProjectDef> researchPrerequisites = plantDef.plant.sowResearchPrerequisites;
         if (researchPrerequisites == null)
+        {
             return true;
+        }
+
         if (Enumerable.Any(researchPrerequisites, project => !project.IsFinished))
+        {
             return false;
+        }
+
         return !plantDef.plant.mustBeWildToSow || (plantDef.plant.mustBeWildToSow && allowWildPlants) || map.Biome.AllWildPlants.Contains(plantDef);
     }
 }

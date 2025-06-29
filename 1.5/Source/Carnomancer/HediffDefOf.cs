@@ -2,7 +2,7 @@
 using RimWorld;
 using Verse;
 
-namespace RakazielPsycasts;
+namespace RakazielPsycasts.Carnomancer;
 
 [DefOf]
 [SuppressMessage("ReSharper", "UnassignedField.Global")]

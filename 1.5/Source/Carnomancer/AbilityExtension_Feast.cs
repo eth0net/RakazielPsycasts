@@ -5,7 +5,7 @@ using Verse;
 using VFECore.Abilities;
 using Ability = VFECore.Abilities.Ability;
 
-namespace RakazielPsycasts;
+namespace RakazielPsycasts.Carnomancer;
 
 public class AbilityExtension_Feast : AbilityExtension_AbilityMod
 {

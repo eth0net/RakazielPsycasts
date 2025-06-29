@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace RakazielPsycasts;
+namespace RakazielPsycasts.Carnomancer;
 
 public class Hediff_Liberation : HediffWithComps
 {

@@ -2,9 +2,9 @@
 using System.Linq;
 using RimWorld.Planet;
 using Verse;
-using Ability = VFECore.Abilities.Ability;
+using VFECore.Abilities;
 
-namespace RakazielPsycasts;
+namespace RakazielPsycasts.Carnomancer;
 
 public class Ability_Avarice : Ability
 {

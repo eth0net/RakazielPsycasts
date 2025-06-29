@@ -18,9 +18,10 @@ public class AbilityExtension_TransformPlant : AbilityExtension_AbilityMod
 
     public override void Cast(GlobalTargetInfo[] targets, Ability ability)
     {
+        base.Cast(targets, ability);
+
         if (targets == null || targets.Length == 0) return;
 
-        base.Cast(targets, ability);
         List<FloatMenuOption> list = [];
         foreach (ThingDef plantDef in ValidPlants(targets))
         {

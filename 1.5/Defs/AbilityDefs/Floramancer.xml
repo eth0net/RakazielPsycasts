@@ -71,17 +71,17 @@
     <durationTime>300</durationTime>
     <showUndrafted>true</showUndrafted>
     <targetMode>Thing</targetMode>
-     <targetingParameters>
-    <!-- <canTargetPawns>false</canTargetPawns>-->
-    <!-- <canTargetBuildings>false</canTargetBuildings>-->
-    <!-- <canTargetAnimals>false</canTargetAnimals>-->
-    <!-- <canTargetHumans>false</canTargetHumans>-->
-    <!-- <canTargetMechs>false</canTargetMechs>-->
-     <canTargetPlants>true</canTargetPlants>
-    <!-- <canTargetMutants>false</canTargetMutants>-->
-    <!-- <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable> -->
-     <thingCategory>Plant</thingCategory>
-     </targetingParameters>
+    <targetingParameters>
+      <!-- <canTargetPawns>false</canTargetPawns>-->
+      <!-- <canTargetBuildings>false</canTargetBuildings>-->
+      <!-- <canTargetAnimals>false</canTargetAnimals>-->
+      <!-- <canTargetHumans>false</canTargetHumans>-->
+      <!-- <canTargetMechs>false</canTargetMechs>-->
+      <canTargetPlants>true</canTargetPlants>
+      <!-- <canTargetMutants>false</canTargetMutants>-->
+      <!-- <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable> -->
+      <thingCategory>Plant</thingCategory>
+    </targetingParameters>
     <jobDef>VFEA_GotoTargetAndUseAbility</jobDef>
     <requireLineOfSight>false</requireLineOfSight>
     <range>999999</range>
@@ -101,36 +101,40 @@
   </VFECore.Abilities.AbilityDef>
 
   <!-- 2 Frugality - transforms wood into simple vegetarian meals - if it targets a stack, transforms the entire stack. -->
-  <!--  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">-->
-  <!--    <defName>RP_TransformTree</defName>-->
-  <!--    <label>transform tree</label>-->
-  <!--    <description>Caster transforms wood into simple vegetarian meals.</description>-->
-  <!--    <iconPath>Abilities/Floramancer/Frugality</iconPath>-->
-  <!--  <iconPath>Abilities/Carnomancer/Resurrect</iconPath>-->
-  <!--    <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>-->
-  <!--    <castTime>60</castTime>-->
-  <!--    <durationTime>300</durationTime>-->
-  <!--    <showUndrafted>true</showUndrafted>-->
-  <!--    <targetMode>Thing</targetMode>-->
-  <!--    <targetingParameters>-->
-  <!--      <canTargetItems>true</canTargetItems>-->
-  <!--      <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>-->
-  <!--      <thingCategory>Wood</thingCategory>-->
-  <!--      <canTargetLocations>false</canTargetLocations>-->
-  <!--      <canTargetPawns>false</canTargetPawns>-->
-  <!--      <canTargetBuildings>false</canTargetBuildings>-->
-  <!--    </targetingParameters>-->
-  <!--    <modExtensions>-->
-  <!--      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">-->
-  <!--        <path>RP_Floramancer</path>-->
-  <!--        <level>2</level>-->
-  <!--        <order>2</order>-->
-  <!--        <psyfocusCost>0.02</psyfocusCost>-->
-  <!--        <entropyGain>0</entropyGain>-->
-  <!--      </li>-->
-  <!--      <li Class="RakazielPsycasts.AbilityExtension_Frugality" />-->
-  <!--    </modExtensions>-->
-  <!--  </VFECore.Abilities.AbilityDef>-->
+  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>RP_Frugality</defName>
+    <label>frugality</label>
+    <description>Caster transforms wood into simple vegetarian meals.</description>
+    <!-- <iconPath>Abilities/Floramancer/Frugality</iconPath> -->
+    <iconPath>Abilities/Carnomancer/Resurrect</iconPath>
+    <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>
+    <castTime>60</castTime>
+    <durationTime>300</durationTime>
+    <showUndrafted>true</showUndrafted>
+    <targetMode>Thing</targetMode>
+    <targetingParameters>
+      <canTargetItems>true</canTargetItems>
+      <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
+      <thingCategory>Item</thingCategory>
+      <!-- <canTargetLocations>false</canTargetLocations> -->
+      <!-- <canTargetPawns>false</canTargetPawns> -->
+      <!-- <canTargetBuildings>false</canTargetBuildings> -->
+    </targetingParameters>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>RP_Floramancer</path>
+        <level>2</level>
+        <order>2</order>
+        <psyfocusCost>0.02</psyfocusCost>
+        <entropyGain>0</entropyGain>
+      </li>
+      <li Class="RakazielPsycasts.AbilityExtension_TransformItem">
+        <fromDef>WoodLog</fromDef>
+        <toDef>MealSimple</toDef>
+        <multiplier>1</multiplier>
+      </li>
+    </modExtensions>
+  </VFECore.Abilities.AbilityDef>
 
   <!-- 2 Transform Tree - transforms crops and trees into other trees, keeps growth time. -->
   <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
@@ -144,17 +148,17 @@
     <durationTime>300</durationTime>
     <showUndrafted>true</showUndrafted>
     <targetMode>Thing</targetMode>
-     <targetingParameters>
-    <!-- <canTargetPawns>false</canTargetPawns>-->
-    <!-- <canTargetBuildings>false</canTargetBuildings>-->
-    <!-- <canTargetAnimals>false</canTargetAnimals>-->
-    <!-- <canTargetHumans>false</canTargetHumans>-->
-    <!-- <canTargetMechs>false</canTargetMechs>-->
-     <canTargetPlants>true</canTargetPlants>
-    <!-- <canTargetMutants>false</canTargetMutants>-->
-    <!-- <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable> -->
-     <thingCategory>Plant</thingCategory>
-     </targetingParameters>
+    <targetingParameters>
+      <!-- <canTargetPawns>false</canTargetPawns>-->
+      <!-- <canTargetBuildings>false</canTargetBuildings>-->
+      <!-- <canTargetAnimals>false</canTargetAnimals>-->
+      <!-- <canTargetHumans>false</canTargetHumans>-->
+      <!-- <canTargetMechs>false</canTargetMechs>-->
+      <canTargetPlants>true</canTargetPlants>
+      <!-- <canTargetMutants>false</canTargetMutants>-->
+      <!-- <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable> -->
+      <thingCategory>Plant</thingCategory>
+    </targetingParameters>
     <jobDef>VFEA_GotoTargetAndUseAbility</jobDef>
     <requireLineOfSight>false</requireLineOfSight>
     <range>999999</range>

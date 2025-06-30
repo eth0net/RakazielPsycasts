@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Defs>
 
   <!--
@@ -40,7 +40,7 @@
     <label>liberation</label>
     <description>Caster meditates, gaining extra psi focus for each missing body part (bionics do not count).</description>
     <iconPath>Abilities/Carnomancer/Resurrect</iconPath>
-    <abilityClass>RakazielPsycasts.Ability_Liberation</abilityClass>
+    <abilityClass>RakazielPsycasts.Carnomancer.Ability_Liberation</abilityClass>
     <castTime>60</castTime>
     <durationTime>300</durationTime>
     <showUndrafted>true</showUndrafted>
@@ -79,7 +79,7 @@
         <psyfocusCost>0.08</psyfocusCost>
         <entropyGain>0</entropyGain>
       </li>
-      <li Class="RakazielPsycasts.AbilityExtension_Bloodletting">
+      <li Class="RakazielPsycasts.Carnomancer.AbilityExtension_Bloodletting">
         <damage>50</damage>
       </li>
     </modExtensions>
@@ -117,7 +117,7 @@
         <psyfocusCost>0.7</psyfocusCost>
         <entropyGain>0</entropyGain>
       </li>
-      <li Class="RakazielPsycasts.AbilityExtension_Purge"/>
+      <li Class="RakazielPsycasts.Carnomancer.AbilityExtension_Purge" />
     </modExtensions>
   </VFECore.Abilities.AbilityDef>
 
@@ -145,7 +145,7 @@
         <psyfocusCost>0.24</psyfocusCost>
         <entropyGain>40</entropyGain>
       </li>
-      <li Class="RakazielPsycasts.AbilityExtension_Feast">
+      <li Class="RakazielPsycasts.Carnomancer.AbilityExtension_Feast">
         <meatModifier>10</meatModifier>
       </li>
       <li Class="VFECore.Abilities.AbilityExtension_FleckOnTarget">
@@ -172,7 +172,7 @@
     <label>avarice</label>
     <description>Caster performs a melee attack and steals one of the parts the caster misses from the target (bionics do not get stolen).</description>
     <iconPath>Abilities/Carnomancer/Resurrect</iconPath>
-    <abilityClass>RakazielPsycasts.Ability_Avarice</abilityClass>
+    <abilityClass>RakazielPsycasts.Carnomancer.Ability_Avarice</abilityClass>
     <jobDef>VFEA_GotoTargetAndUseAbility</jobDef>
     <targetMode>Pawn</targetMode>
     <range>99999</range>
@@ -207,7 +207,7 @@
     <label>spite</label>
     <description>Ranged attack, inflicts all injuries of the caster, including missing body parts (bionics do not count as missing) on the target, caster's injuries close, but are not removed.</description>
     <iconPath>Abilities/Carnomancer/Resurrect</iconPath>
-    <abilityClass>RakazielPsycasts.Ability_Spite</abilityClass>
+    <abilityClass>RakazielPsycasts.Carnomancer.Ability_Spite</abilityClass>
     <jobDef>VFEA_GotoTargetAndUseAbility</jobDef>
     <range>999999</range>
     <distanceToTarget>2.9</distanceToTarget>
@@ -244,7 +244,7 @@
     <label>lure</label>
     <description>Ranged utility, Caster sacrifices body part to instantly tame target animal or Anomaly monster (Revenant Coma effects end, Noxiosphere still has time limit). Animals need Animal skill to keep tamed, Anomaly monsters don't. Tames hostile ghouls but they still need meat or turn hostile again. Also works on Wild Men.</description>
     <iconPath>Abilities/Carnomancer/Resurrect</iconPath>
-    <abilityClass>RakazielPsycasts.Ability_Lure</abilityClass>
+    <abilityClass>RakazielPsycasts.Carnomancer.Ability_Lure</abilityClass>
     <jobDef>VFEA_GotoTargetAndUseAbility</jobDef>
     <castSound>PsychicSoothePulserCast</castSound>
     <distanceToTarget>6.9</distanceToTarget>
@@ -286,7 +286,7 @@
           <li>RP_Bloodletting</li>
         </prerequisites>
       </li>
-      <li Class="RakazielPsycasts.AbilityExtension_Haruspex"/>
+      <li Class="RakazielPsycasts.Carnomancer.AbilityExtension_Haruspex" />
     </modExtensions>
   </VFECore.Abilities.AbilityDef>
 
@@ -327,7 +327,7 @@
           <li>RP_Purge</li>
         </prerequisites>
       </li>
-      <li Class="RakazielPsycasts.AbilityExtension_FleshBond"/>
+      <li Class="RakazielPsycasts.Carnomancer.AbilityExtension_FleshBond" />
     </modExtensions>
   </VFECore.Abilities.AbilityDef>
 
@@ -354,7 +354,7 @@
           <li>RP_Feast</li>
         </prerequisites>
       </li>
-      <li Class="RakazielPsycasts.AbilityExtension_Homunculus"/>
+      <li Class="RakazielPsycasts.Carnomancer.AbilityExtension_Homunculus" />
     </modExtensions>
   </VFECore.Abilities.AbilityDef>
 </Defs>

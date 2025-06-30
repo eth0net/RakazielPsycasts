@@ -5,7 +5,7 @@
     <defName>RP_Liberation</defName>
     <label>liberation</label>
     <description>Rapidly regenerating psyfocus at the cost of body parts.</description>
-    <hediffClass>RakazielPsycasts.Hediff_Liberation</hediffClass>
+    <hediffClass>RakazielPsycasts.Carnomancer.Hediff_Liberation</hediffClass>
   </HediffDef>
 
 </Defs>

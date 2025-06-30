@@ -22,7 +22,7 @@ public class AbilityExtension_Purge : AbilityExtension_AbilityMod
                 continue;
             }
 
-            pawn.health.AddHediff(HediffDefOf.MissingBodyPart, pawn.health.hediffSet.GetNotMissingParts().RandomElement());
+            pawn.health.AddHediff(RPDefOf.MissingBodyPart, pawn.health.hediffSet.GetNotMissingParts().RandomElement());
 
             foreach (Hediff hediff in pawn.health.hediffSet.hediffs)
             {

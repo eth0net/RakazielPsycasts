@@ -50,6 +50,14 @@
             <HintPath>$(ManagedDir)/UnityEngine.CoreModule.dll</HintPath>
             <Private>False</Private>
         </Reference>
+        <Reference Include="UnityEngine.IMGUIModule">
+            <HintPath>$(ManagedDir)/UnityEngine.IMGUIModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.TextRenderingModule">
+            <HintPath>$(ManagedDir)/UnityEngine.TextRenderingModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
         <!-- <Reference Include="com.rlabrecque.steamworks.net">
           <HintPath>$(ManagedDir)/com.rlabrecque.steamworks.net.dll</HintPath>
           <Private>False</Private>

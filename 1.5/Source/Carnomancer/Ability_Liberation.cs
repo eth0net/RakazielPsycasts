@@ -8,7 +8,7 @@ public class Ability_Liberation : Ability
     public override Gizmo GetGizmo()
     {
         // ReSharper disable once LocalVariableHidesMember
-        Hediff hediff = pawn.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.RP_Liberation);
+        Hediff hediff = pawn.health.hediffSet.GetFirstHediffOfDef(RPDefOf.RP_Liberation);
         if (hediff == null)
         {
             return base.GetGizmo();

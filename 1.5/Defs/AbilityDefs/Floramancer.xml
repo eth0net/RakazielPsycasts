@@ -72,14 +72,7 @@
     <showUndrafted>true</showUndrafted>
     <targetMode>Thing</targetMode>
     <targetingParameters>
-      <!-- <canTargetPawns>false</canTargetPawns>-->
-      <!-- <canTargetBuildings>false</canTargetBuildings>-->
-      <!-- <canTargetAnimals>false</canTargetAnimals>-->
-      <!-- <canTargetHumans>false</canTargetHumans>-->
-      <!-- <canTargetMechs>false</canTargetMechs>-->
       <canTargetPlants>true</canTargetPlants>
-      <!-- <canTargetMutants>false</canTargetMutants>-->
-      <!-- <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable> -->
       <thingCategory>Plant</thingCategory>
     </targetingParameters>
     <jobDef>VFEA_GotoTargetAndUseAbility</jobDef>
@@ -94,7 +87,7 @@
         <psyfocusCost>0.02</psyfocusCost>
         <entropyGain>0</entropyGain>
       </li>
-      <li Class="RakazielPsycasts.AbilityExtension_TransformPlant">
+      <li Class="RakazielPsycasts.Floramancer.AbilityExtension_TransformPlant">
         <transformToTree>false</transformToTree>
       </li>
     </modExtensions>
@@ -116,9 +109,6 @@
       <canTargetItems>true</canTargetItems>
       <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
       <thingCategory>Item</thingCategory>
-      <!-- <canTargetLocations>false</canTargetLocations> -->
-      <!-- <canTargetPawns>false</canTargetPawns> -->
-      <!-- <canTargetBuildings>false</canTargetBuildings> -->
     </targetingParameters>
     <modExtensions>
       <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
@@ -128,7 +118,7 @@
         <psyfocusCost>0.02</psyfocusCost>
         <entropyGain>0</entropyGain>
       </li>
-      <li Class="RakazielPsycasts.AbilityExtension_TransformItem">
+      <li Class="RakazielPsycasts.Floramancer.AbilityExtension_TransformItem">
         <fromDef>WoodLog</fromDef>
         <toDef>MealSimple</toDef>
         <multiplier>1</multiplier>
@@ -149,14 +139,7 @@
     <showUndrafted>true</showUndrafted>
     <targetMode>Thing</targetMode>
     <targetingParameters>
-      <!-- <canTargetPawns>false</canTargetPawns>-->
-      <!-- <canTargetBuildings>false</canTargetBuildings>-->
-      <!-- <canTargetAnimals>false</canTargetAnimals>-->
-      <!-- <canTargetHumans>false</canTargetHumans>-->
-      <!-- <canTargetMechs>false</canTargetMechs>-->
       <canTargetPlants>true</canTargetPlants>
-      <!-- <canTargetMutants>false</canTargetMutants>-->
-      <!-- <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable> -->
       <thingCategory>Plant</thingCategory>
     </targetingParameters>
     <jobDef>VFEA_GotoTargetAndUseAbility</jobDef>
@@ -171,7 +154,7 @@
         <psyfocusCost>0.02</psyfocusCost>
         <entropyGain>0</entropyGain>
       </li>
-      <li Class="RakazielPsycasts.AbilityExtension_TransformPlant">
+      <li Class="RakazielPsycasts.Floramancer.AbilityExtension_TransformPlant">
         <transformToTree>true</transformToTree>
       </li>
     </modExtensions>
@@ -205,11 +188,37 @@
   <!--        <psyfocusCost>0.02</psyfocusCost>-->
   <!--        <entropyGain>0</entropyGain>-->
   <!--      </li>-->
-  <!--      <li Class="RakazielPsycasts.AbilityExtension_AwakenDryad" />-->
+  <!--      <li Class="RakazielPsycasts.Floramancer.AbilityExtension_AwakenDryad" />-->
   <!--    </modExtensions>-->
   <!--  </VFECore.Abilities.AbilityDef>-->
 
   <!-- 4 Branching Mind (requires Awaken Dryad) - works like VPE Puppeteer, creating more dryad slots -->
+  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>RP_BranchingMind</defName>
+    <label>branching mind</label>
+    <description>By opening their mind further to the power of nature, the caster can permanently increase their limit of controllable dryads. Effectively painless as they knock themselves unconscious for a short duration from shattering their sense of self.</description>
+    <!-- <iconPath>Abilities/Floramancer/BranchingMind</iconPath> -->
+    <iconPath>Abilities/Carnomancer/Resurrect</iconPath>
+    <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>
+    <targetMode>Self</targetMode>
+    <castTime>600</castTime>
+    <!-- <castSound>VPEP_MindSplit_Hit</castSound> -->
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>RP_Floramancer</path>
+        <level>4</level>
+        <order>2</order>
+        <psyfocusCost>0.8</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <!-- <li>RP_AwakenDryad</li> -->
+        </prerequisites>
+      </li>
+      <li Class="RakazielPsycasts.Floramancer.AbilityExtension_BranchingMind">
+        <bandwidthIncrease>1</bandwidthIncrease>
+      </li>
+    </modExtensions>
+  </VFECore.Abilities.AbilityDef>
 
   <!-- 4 Awaken Tree (requires Awaken Dryad) - turns any of the special trees (Anima, Gauranlen, Tox) into their respective VRE Pythokin type - and turns the Pythokin type (or more precisely anyone with their type specific genes) back into the tree (while keeping all their data with Cryptocasket logic, for when they are transformed back) -->
   <!--  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">-->
@@ -239,7 +248,7 @@
   <!--        <psyfocusCost>0.02</psyfocusCost>-->
   <!--        <entropyGain>0</entropyGain>-->
   <!--      </li>-->
-  <!--      <li Class="RakazielPsycasts.AbilityExtension_AwakenTree" />-->
+  <!--      <li Class="RakazielPsycasts.Floramancer.AbilityExtension_AwakenTree" />-->
   <!--    </modExtensions>-->
   <!--  </VFECore.Abilities.AbilityDef>-->
 
@@ -271,7 +280,7 @@
   <!--        <psyfocusCost>0.02</psyfocusCost>-->
   <!--        <entropyGain>0</entropyGain>-->
   <!--      </li>-->
-  <!--      <li Class="RakazielPsycasts.AbilityExtension_Reincarnation">-->
+  <!--      <li Class="RakazielPsycasts.Floramancer.AbilityExtension_Reincarnation">-->
   <!--        <countdown>3600000</countdown>-->
   <!--      </li>-->
   <!--    </modExtensions>-->

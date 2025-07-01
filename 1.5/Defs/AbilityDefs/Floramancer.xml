@@ -228,36 +228,36 @@
   </VFECore.Abilities.AbilityDef>
 
   <!-- 4 Awaken Tree (requires Awaken Dryad) - turns any of the special trees (Anima, Gauranlen, Tox) into their respective VRE Pythokin type - and turns the Pythokin type (or more precisely anyone with their type specific genes) back into the tree (while keeping all their data with Cryptocasket logic, for when they are transformed back) -->
-  <!--  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">-->
-  <!--    <defName>RP_AwakenTree</defName>-->
-  <!--    <label>awaken tree</label>-->
-  <!--    <description>Caster awakens a powerful tree to produce a new Phytokin. This ability may also be used to transform a Phytokin-like pawn into a tree, preserving them to be awakened later.</description>-->
-  <!--    <iconPath>Abilities/Floramancer/AwakenTree</iconPath>-->
-  <!--  <iconPath>Abilities/Carnomancer/Resurrect</iconPath>-->
-  <!--    <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>-->
-  <!--    <castTime>60</castTime>-->
-  <!--    <durationTime>300</durationTime>-->
-  <!--    <showUndrafted>true</showUndrafted>-->
-  <!--    <targetMode>Thing</targetMode>-->
-  <!--    <targetingParameters>-->
-  <!--      <canTargetItems>false</canTargetItems>-->
-  <!--      <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>-->
-  <!--      <thingCategory>Plant</thingCategory>-->
-  <!--      <canTargetLocations>false</canTargetLocations>-->
-  <!--      <canTargetPawns>true</canTargetPawns>-->
-  <!--      <canTargetBuildings>false</canTargetBuildings>-->
-  <!--    </targetingParameters>-->
-  <!--    <modExtensions>-->
-  <!--      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">-->
-  <!--        <path>RP_Floramancer</path>-->
-  <!--        <level>3</level>-->
-  <!--        <order>1</order>-->
-  <!--        <psyfocusCost>0.02</psyfocusCost>-->
-  <!--        <entropyGain>0</entropyGain>-->
-  <!--      </li>-->
-  <!--      <li Class="RakazielPsycasts.Floramancer.AbilityExtension_AwakenTree" />-->
-  <!--    </modExtensions>-->
-  <!--  </VFECore.Abilities.AbilityDef>-->
+  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>RP_AwakenTree</defName>
+    <label>awaken tree</label>
+    <description>Caster awakens a powerful tree to produce a new Phytokin. This ability may also be used to transform a Phytokin-like pawn into a tree, preserving them to be awakened later.</description>
+    <!-- <iconPath>Abilities/Floramancer/AwakenTree</iconPath> -->
+    <iconPath>Abilities/Carnomancer/Resurrect</iconPath>
+    <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>
+    <castTime>60</castTime>
+    <durationTime>300</durationTime>
+    <showUndrafted>true</showUndrafted>
+    <targetMode>Thing</targetMode>
+    <targetingParameters>
+      <canTargetPawns>true</canTargetPawns>
+      <canTargetPlants>true</canTargetPlants>
+    </targetingParameters>
+    <jobDef>VFEA_GotoTargetAndUseAbility</jobDef>
+    <requireLineOfSight>false</requireLineOfSight>
+    <range>999999</range>
+    <distanceToTarget>1.9</distanceToTarget>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>RP_Floramancer</path>
+        <level>3</level>
+        <order>1</order>
+        <psyfocusCost>0.02</psyfocusCost>
+        <entropyGain>0</entropyGain>
+      </li>
+      <li Class="RakazielPsycasts.Floramancer.AbilityExtension_AwakenTree" />
+    </modExtensions>
+  </VFECore.Abilities.AbilityDef>
 
   <!-- 5 Reincarnation (requires Branching Mind) - transforms a corpse into a dryad, keeping the old data with Cryptocasket logic. 60 days later, the dryad can transform into the original being. The cryptocasket data gets deleted if the dryad gets killed or merges into an Unbound Dryad. -->
   <!--  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">-->

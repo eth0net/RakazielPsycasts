@@ -76,6 +76,22 @@
             <HintPath>$(WorkshopDir)/2720631512/1.5/Assemblies/VanillaIdeologyExpandedDryads.dll</HintPath>
             <Private>False</Private>
         </Reference>
+        <Content Condition="Exists('$(WorkshopDir)/2023507013')" Include="$(WorkshopDir)/2023507013/**/Defs/**/*">
+            <Link>Attached/VanillaExpandedFramework/%(RecursiveDir)/%(FileName)%(Extension)</Link>
+            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+        </Content>
+        <Content Condition="Exists('$(WorkshopDir)/2842502659')" Include="$(WorkshopDir)/2842502659/**/Defs/**/*">
+            <Link>Attached/VanillaPsycastsExpanded/%(RecursiveDir)/%(FileName)%(Extension)</Link>
+            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+        </Content>
+        <Content Condition="Exists('$(WorkshopDir)/2720631512')" Include="$(WorkshopDir)/2720631512/**/Defs/**/*">
+            <Link>Attached/VanillaIdeologyExpandedDryads/%(RecursiveDir)/%(FileName)%(Extension)</Link>
+            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+        </Content>
+        <Content Condition="Exists('$(WorkshopDir)/2927323805')" Include="$(WorkshopDir)/2927323805/**/Defs/**/*">
+            <Link>Attached/VanillaRacesExpandedPhytokin/%(RecursiveDir)/%(FileName)%(Extension)</Link>
+            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
 
     <!-- Include nuget packages -->

@@ -110,6 +110,10 @@
       <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
       <thingCategory>Item</thingCategory>
     </targetingParameters>
+    <jobDef>VFEA_GotoTargetAndUseAbility</jobDef>
+    <requireLineOfSight>false</requireLineOfSight>
+    <range>999999</range>
+    <distanceToTarget>1.9</distanceToTarget>
     <modExtensions>
       <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
         <path>RP_Floramancer</path>
@@ -131,7 +135,7 @@
     <defName>RP_TransformTree</defName>
     <label>transform tree</label>
     <description>Caster transforms crops and trees into other trees. Growing progress is preserved.</description>
-    <!--    <iconPath>Abilities/Floramancer/TransformTree</iconPath>-->
+    <!-- <iconPath>Abilities/Floramancer/TransformTree</iconPath> -->
     <iconPath>Abilities/Carnomancer/Resurrect</iconPath>
     <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>
     <castTime>60</castTime>
@@ -161,36 +165,39 @@
   </VFECore.Abilities.AbilityDef>
 
   <!-- 3 Awaken Dryad (requires Transform Tree) - transforms tree into Ideology dryad (using the Ideology dryad menu so any other dryads are automatically patched in) . The dryad is bound to the caster - we could use code from VRE Pythokin and the VPE Puppeteer - but is otherwise a normal dryad (merging into Unbound Dryads with Vanilla Ideology Expanded included) -->
-  <!--  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">-->
-  <!--    <defName>RP_AwakenDryad</defName>-->
-  <!--    <label>awaken dryad</label>-->
-  <!--    <description>Caster awakens a tree to produce a new dryad bound to them.</description>-->
-  <!--    <iconPath>Abilities/Floramancer/AwakenDryad</iconPath>-->
-  <!--  <iconPath>Abilities/Carnomancer/Resurrect</iconPath>-->
-  <!--    <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>-->
-  <!--    <castTime>60</castTime>-->
-  <!--    <durationTime>300</durationTime>-->
-  <!--    <showUndrafted>true</showUndrafted>-->
-  <!--    <targetMode>Thing</targetMode>-->
-  <!--    <targetingParameters>-->
-  <!--      <canTargetItems>false</canTargetItems>-->
-  <!--      <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>-->
-  <!--      <thingCategory>Plant</thingCategory>-->
-  <!--      <canTargetLocations>false</canTargetLocations>-->
-  <!--      <canTargetPawns>false</canTargetPawns>-->
-  <!--      <canTargetBuildings>false</canTargetBuildings>-->
-  <!--    </targetingParameters>-->
-  <!--    <modExtensions>-->
-  <!--      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">-->
-  <!--        <path>RP_Floramancer</path>-->
-  <!--        <level>3</level>-->
-  <!--        <order>1</order>-->
-  <!--        <psyfocusCost>0.02</psyfocusCost>-->
-  <!--        <entropyGain>0</entropyGain>-->
-  <!--      </li>-->
-  <!--      <li Class="RakazielPsycasts.Floramancer.AbilityExtension_AwakenDryad" />-->
-  <!--    </modExtensions>-->
-  <!--  </VFECore.Abilities.AbilityDef>-->
+  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>RP_AwakenDryad</defName>
+    <label>awaken dryad</label>
+    <description>Caster awakens a tree to produce a new dryad bound to them.</description>
+    <!-- <iconPath>Abilities/Floramancer/AwakenDryad</iconPath> -->
+    <iconPath>Abilities/Carnomancer/Resurrect</iconPath>
+    <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>
+    <castTime>60</castTime>
+    <durationTime>300</durationTime>
+    <showUndrafted>true</showUndrafted>
+    <targetMode>Thing</targetMode>
+    <targetingParameters>
+      <canTargetPlants>true</canTargetPlants>
+      <thingCategory>Plant</thingCategory>
+    </targetingParameters>
+    <jobDef>VFEA_GotoTargetAndUseAbility</jobDef>
+    <requireLineOfSight>false</requireLineOfSight>
+    <range>999999</range>
+    <distanceToTarget>1.9</distanceToTarget>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>RP_Floramancer</path>
+        <level>3</level>
+        <order>1</order>
+        <psyfocusCost>0.02</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>RP_TransformTree</li>
+        </prerequisites>
+      </li>
+      <li Class="RakazielPsycasts.Floramancer.AbilityExtension_AwakenDryad" />
+    </modExtensions>
+  </VFECore.Abilities.AbilityDef>
 
   <!-- 4 Branching Mind (requires Awaken Dryad) - works like VPE Puppeteer, creating more dryad slots -->
   <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
@@ -211,7 +218,7 @@
         <psyfocusCost>0.8</psyfocusCost>
         <entropyGain>0</entropyGain>
         <prerequisites>
-          <!-- <li>RP_AwakenDryad</li> -->
+          <li>RP_AwakenDryad</li>
         </prerequisites>
       </li>
       <li Class="RakazielPsycasts.Floramancer.AbilityExtension_BranchingMind">

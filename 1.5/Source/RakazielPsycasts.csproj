@@ -72,6 +72,10 @@
             <HintPath>$(WorkshopDir)/2842502659/1.5/Assemblies/VanillaPsycastsExpanded.dll</HintPath>
             <Private>False</Private>
         </Reference>
+        <Reference Include="VanillaIdeologyExpandedDryads">
+            <HintPath>$(WorkshopDir)/2720631512/1.5/Assemblies/VanillaIdeologyExpandedDryads.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
     </ItemGroup>
 
     <!-- Include nuget packages -->
@@ -91,7 +95,7 @@
     </ItemGroup>
 
     <!-- Optionally include Publicizer -->
-    <!-- <ItemGroup>
+    <!--  <ItemGroup>
       <PackageReference Include="Krafs.Publicizer" Version="2.2.1" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" PrivateAssets="all" />
       <Publicize Include="Assembly-CSharp" />
     </ItemGroup> -->

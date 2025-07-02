@@ -135,6 +135,7 @@
     <distanceToTarget>2.9</distanceToTarget>
     <targetMode>Self</targetMode>
     <castTime>360</castTime>
+    <needsTicking>true</needsTicking>
     <showUndrafted>true</showUndrafted>
     <chance>0</chance>
     <modExtensions>

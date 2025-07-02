@@ -207,6 +207,7 @@
     <!-- <iconPath>Abilities/Floramancer/BranchingMind</iconPath> -->
     <iconPath>Abilities/Carnomancer/Resurrect</iconPath>
     <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>
+    <showUndrafted>true</showUndrafted>
     <targetMode>Self</targetMode>
     <castTime>600</castTime>
     <!-- <castSound>VPEP_MindSplit_Hit</castSound> -->
@@ -260,38 +261,34 @@
   </VFECore.Abilities.AbilityDef>
 
   <!-- 5 Reincarnation (requires Branching Mind) - transforms a corpse into a dryad, keeping the old data with Cryptocasket logic. 60 days later, the dryad can transform into the original being. The cryptocasket data gets deleted if the dryad gets killed or merges into an Unbound Dryad. -->
-  <!--  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">-->
-  <!--    <defName>RP_Reincarnation</defName>-->
-  <!--    <label>reincarnation</label>-->
-  <!--    <description>Caster transforms a corpse into a dryad, starting the process of reincarnating the original being. If the dryad lives for 60 days the original being will return to life. If the dryad dies or becomes unbound the life is released and lost.</description>-->
-  <!--    <iconPath>Abilities/Floramancer/Reincarnation</iconPath>-->
-  <!--  <iconPath>Abilities/Carnomancer/Resurrect</iconPath>-->
-  <!--    <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>-->
-  <!--    <castTime>60</castTime>-->
-  <!--    <durationTime>300</durationTime>-->
-  <!--    <showUndrafted>true</showUndrafted>-->
-  <!--    <targetMode>Thing</targetMode>-->
-  <!--    <targetingParameters>-->
-  <!--      <canTargetItems>false</canTargetItems>-->
-  <!--      <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>-->
-  <!--      <thingCategory>Plant</thingCategory>-->
-  <!--      <canTargetLocations>false</canTargetLocations>-->
-  <!--      <canTargetPawns>true</canTargetPawns>-->
-  <!--      <canTargetBuildings>false</canTargetBuildings>-->
-  <!--    </targetingParameters>-->
-  <!--    <modExtensions>-->
-  <!--      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">-->
-  <!--        <path>RP_Floramancer</path>-->
-  <!--        <level>3</level>-->
-  <!--        <order>1</order>-->
-  <!--        <psyfocusCost>0.02</psyfocusCost>-->
-  <!--        <entropyGain>0</entropyGain>-->
-  <!--      </li>-->
-  <!--      <li Class="RakazielPsycasts.Floramancer.AbilityExtension_Reincarnation">-->
-  <!--        <countdown>3600000</countdown>-->
-  <!--      </li>-->
-  <!--    </modExtensions>-->
-  <!--  </VFECore.Abilities.AbilityDef>-->
+  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>RP_Reincarnation</defName>
+    <label>reincarnation</label>
+    <description>Caster transforms a corpse into a dryad, starting the process of reincarnating the original being. If the dryad lives for 60 days the original being will return to life. If the dryad dies or becomes unbound the life is released and lost.</description>
+    <!-- <iconPath>Abilities/Floramancer/Reincarnation</iconPath> -->
+    <iconPath>Abilities/Carnomancer/Resurrect</iconPath>
+    <abilityClass>VFECore.Abilities.Ability_TargetCorpse</abilityClass>
+    <castTime>60</castTime>
+    <durationTime>300</durationTime>
+    <showUndrafted>true</showUndrafted>
+    <targetMode>Thing</targetMode>
+    <jobDef>VFEA_GotoTargetAndUseAbility</jobDef>
+    <requireLineOfSight>false</requireLineOfSight>
+    <range>999999</range>
+    <distanceToTarget>1.9</distanceToTarget>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>RP_Floramancer</path>
+        <level>3</level>
+        <order>1</order>
+        <psyfocusCost>0.02</psyfocusCost>
+        <entropyGain>0</entropyGain>
+      </li>
+      <li Class="RakazielPsycasts.Floramancer.AbilityExtension_Reincarnation">
+        <countdown>3600000</countdown>
+      </li>
+    </modExtensions>
+  </VFECore.Abilities.AbilityDef>
 
   <!-- 5 One with the Forest (Requires Branching Mind) - merges with a tree and can teleport to any other tree on the map. Teleports to the next tree in the scene asset list if its current tree is destroyed. Can leave at will. Jumps have a flat cost regardless of range. -->
 

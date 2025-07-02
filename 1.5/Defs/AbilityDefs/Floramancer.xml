@@ -215,7 +215,7 @@
       <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
         <path>RP_Floramancer</path>
         <level>4</level>
-        <order>2</order>
+        <order>1</order>
         <psyfocusCost>0.8</psyfocusCost>
         <entropyGain>0</entropyGain>
         <prerequisites>
@@ -251,8 +251,8 @@
     <modExtensions>
       <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
         <path>RP_Floramancer</path>
-        <level>3</level>
-        <order>1</order>
+        <level>4</level>
+        <order>2</order>
         <psyfocusCost>0.02</psyfocusCost>
         <entropyGain>0</entropyGain>
       </li>
@@ -279,7 +279,7 @@
     <modExtensions>
       <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
         <path>RP_Floramancer</path>
-        <level>3</level>
+        <level>5</level>
         <order>1</order>
         <psyfocusCost>0.02</psyfocusCost>
         <entropyGain>0</entropyGain>

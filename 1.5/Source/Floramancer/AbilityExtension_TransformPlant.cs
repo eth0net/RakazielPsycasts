@@ -89,6 +89,17 @@ public class AbilityExtension_TransformPlant : AbilityExtension_AbilityMod
             return false;
         }
 
+        // Check if any target holds a pawn
+        if (targets.Any(target => target.HasThing && target.Thing.GetCompPawnHolder().HoldsPawn))
+        {
+            if (throwMessages)
+            {
+                Messages.Message("Cannot transform a plant that holds a pawn.", MessageTypeDefOf.RejectInput, false);
+            }
+
+            return false;
+        }
+
         // Check if there are any valid plant defs for all targets
         if (!ValidPlants(targets).Any())
         {

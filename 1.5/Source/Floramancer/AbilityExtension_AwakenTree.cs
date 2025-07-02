@@ -1,9 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using RimWorld;
+﻿using RimWorld;
 using RimWorld.Planet;
 using Verse;
-using Verse.Sound;
 using VFECore.Abilities;
 using Ability = VFECore.Abilities.Ability;
 
@@ -25,16 +22,15 @@ public class AbilityExtension_AwakenTree : AbilityExtension_AbilityMod
             switch (target.Thing)
             {
                 case Pawn pawn when pawn.GetTreeDefForPhytokin() is { } treeDef:
-                    // Transform Phytokin type back into the special tree
                     pawn.TransformPawnToTree(treeDef);
                     break;
+
                 case Plant plant when plant.def.GetPhytokinKindForTree() is { } phytokinKind:
-                    // Transform special tree into the matching Phytokin type
                     plant.TransformTreeToPawn(phytokinKind);
                     break;
+
                 default:
-                    // If the target is neither a valid Pawn with a tree affinity nor a Plant with a Phytokin kind, do nothing
-                    Log.Warning($"AwakenTree ability was cast on an invalid target: {target.Thing} of type {target.Thing?.GetType()}");
+                    Log.Warning($"AwakenTree ability was cast on an invalid target: {target.Thing} of type {target.Thing?.GetType()} at {target.Cell}");
                     break;
             }
         }

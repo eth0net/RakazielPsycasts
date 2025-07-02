@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/ThingDef[@Name = "TreeBase"]/comps</xpath>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>/Defs/ThingDef[@Name = "TreeBase"]</xpath>
+      <value>
+        <comps>
+          <li Class="RakazielPsycasts.CompProperties_PawnHolder" />
+        </comps>
+      </value>
+    </nomatch>
+    <match Class="PatchOperationAdd">
+      <xpath>/Defs/ThingDef[@Name = "TreeBase"]/comps</xpath>
+      <value>
+        <li Class="RakazielPsycasts.CompProperties_PawnHolder" />
+      </value>
+    </match>
+  </Operation>
+
+</Patch>

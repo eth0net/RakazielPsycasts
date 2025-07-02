@@ -16,30 +16,30 @@ public class RPDefOf
     [UsedImplicitly]
     public static HediffDef MissingBodyPart;
 
-    [UsedImplicitly]
+    [UsedImplicitly, MayRequireRoyalty]
     public static GeneDef VRE_AnimaAffinity;
 
-    [UsedImplicitly]
+    [UsedImplicitly, MayRequireIdeology]
     public static GeneDef VRE_GauranlenAffinity;
 
-    [UsedImplicitly]
+    [UsedImplicitly, MayRequireBiotech]
     public static GeneDef VRE_PoluxAffinity;
 
-    [UsedImplicitly]
-    public static ThingDef AnimaTree;
+    [UsedImplicitly, MayRequireRoyalty]
+    public static ThingDef Plant_TreeAnima;
 
-    [UsedImplicitly]
-    public static ThingDef GauranlenTree;
+    [UsedImplicitly, MayRequireIdeology]
+    public static ThingDef Plant_TreeGauranlen;
 
-    [UsedImplicitly]
-    public static ThingDef PoluxTree;
+    [UsedImplicitly, MayRequireBiotech]
+    public static ThingDef Plant_TreePolux;
 
-    [UsedImplicitly]
-    public static PawnKindDef VRE_AnimaPhytokin;
+    [UsedImplicitly, MayRequireRoyalty]
+    public static XenotypeDef VRE_Animakin;
 
-    [UsedImplicitly]
-    public static PawnKindDef VRE_GauranlenPhytokin;
+    [UsedImplicitly, MayRequireIdeology]
+    public static XenotypeDef VRE_Gauranlenkin;
 
-    [UsedImplicitly]
-    public static PawnKindDef VRE_PoluxPhytokin;
+    [UsedImplicitly, MayRequireBiotech]
+    public static XenotypeDef VRE_Poluxkin;
 }

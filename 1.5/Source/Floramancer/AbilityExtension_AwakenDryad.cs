@@ -32,6 +32,13 @@ public class AbilityExtension_AwakenDryad : AbilityExtension_AbilityMod
                         {
                             if (target.Thing is not Plant plant)
                             {
+                                Log.Error($"{nameof(AbilityExtension_AwakenDryad)}.{nameof(Cast)}: Target {target} is not a plant.");
+                                continue;
+                            }
+
+                            if (ability.pawn.GetFloramancerHediff() is not { } floramancerHediff)
+                            {
+                                Log.Error($"{nameof(AbilityExtension_Reincarnation)}.{nameof(Cast)}: Failed to get Hediff_Floramancer for {ability.pawn}.");
                                 continue;
                             }
 
@@ -41,22 +48,17 @@ public class AbilityExtension_AwakenDryad : AbilityExtension_AbilityMod
                                     faction: Faction.OfPlayer,
                                     forceGenerateNewPawn: true,
                                     canGeneratePawnRelations: false,
-                                    // allowFood: false,
-                                    // allowAddictions: false,
-                                    // forceNoIdeo: true,
-                                    // forceNoBackstory: true,
-                                    // forbidAnyTitle: true,
                                     developmentalStages: DevelopmentalStage.Newborn
                                 )
                             );
-                            dryad.connections?.ConnectTo(ability.pawn);
-                            Hediff_Floramancer hediff = ability.pawn.GetFloramancerHediff();
-                            hediff?.dryads.Add(dryad);
 
                             Map map = target.Thing.MapHeld;
                             IntVec3 cell = target.Thing.PositionHeld;
-
                             plant.Destroy();
+
+                            dryad.connections?.ConnectTo(ability.pawn);
+                            floramancerHediff.dryads.Add(dryad);
+
                             GenSpawn.Spawn(dryad, cell, map).Rotation = Rot4.South;
                             SoundDefOf.Pawn_Dryad_Spawn.PlayOneShot(SoundInfo.InMap(dryad));
                         }

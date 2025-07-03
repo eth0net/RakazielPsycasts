@@ -37,13 +37,13 @@ public sealed class DryadBandwidthGizmo : Gizmo
         int usedBandwidth = hediff.dryads.Count;
         string bandwidthText = $"{usedBandwidth} / {totalBandwidth}";
 
-        TaggedString tooltipText = "RP.Dryads".Translate().Colorize(ColoredText.TipSectionTitleColor) + $": {bandwidthText}\n\n" +
-                                   "RP.DryadsGizmoTip".Translate(hediff.ComaDuration.ToStringTicksToPeriod(), totalBandwidth);
+        TaggedString tooltipText = "RP_Dryads".Translate().Colorize(ColoredText.TipSectionTitleColor) + $": {bandwidthText}\n\n" +
+                                   "RP_DryadsGizmoTip".Translate(hediff.ComaDuration.ToStringTicksToPeriod(), totalBandwidth);
 
         if (usedBandwidth > 0)
         {
             IEnumerable<string> dryadLabels = hediff.dryads.Select(dryad => dryad.LabelCap);
-            tooltipText += "\n\n" + "RP.DryadUsage".Translate() + "\n" + dryadLabels.ToLineList(" - ");
+            tooltipText += "\n\n" + "RP_DryadUsage".Translate() + "\n" + dryadLabels.ToLineList(" - ");
         }
 
         TooltipHandler.TipRegion(outerRect, tooltipText);
@@ -51,7 +51,7 @@ public sealed class DryadBandwidthGizmo : Gizmo
         Text.Font = GameFont.Small;
         Text.Anchor = TextAnchor.UpperLeft;
         Rect labelRect = new(innerRect.x, innerRect.y, innerRect.width, 20f);
-        Widgets.Label(labelRect, "RP.Dryads".Translate());
+        Widgets.Label(labelRect, "RP_Dryads".Translate());
 
         Text.Anchor = TextAnchor.UpperRight;
         Widgets.Label(labelRect, bandwidthText);

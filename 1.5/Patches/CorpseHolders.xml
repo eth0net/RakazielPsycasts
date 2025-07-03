@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/ThingDef[@Name = "DryadBase"]/comps</xpath>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>/Defs/ThingDef[@Name = "DryadBase"]</xpath>
+      <value>
+        <comps>
+          <li Class="RakazielPsycasts.CompProperties_CorpseHolder" />
+        </comps>
+      </value>
+    </nomatch>
+    <match Class="PatchOperationAdd">
+      <xpath>/Defs/ThingDef[@Name = "DryadBase"]/comps</xpath>
+      <value>
+        <li Class="RakazielPsycasts.CompProperties_CorpseHolder" />
+      </value>
+    </match>
+  </Operation>
+
+</Patch>

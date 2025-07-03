@@ -2,24 +2,6 @@
 <Patch>
 
   <Operation Class="PatchOperationConditional">
-    <xpath>/Defs/ThingDef[@Name = "DryadBase"]/comps</xpath>
-    <nomatch Class="PatchOperationAdd">
-      <xpath>/Defs/ThingDef[@Name = "DryadBase"]</xpath>
-      <value>
-        <comps>
-          <li Class="RakazielPsycasts.CompProperties_PawnHolder" />
-        </comps>
-      </value>
-    </nomatch>
-    <match Class="PatchOperationAdd">
-      <xpath>/Defs/ThingDef[@Name = "DryadBase"]/comps</xpath>
-      <value>
-        <li Class="RakazielPsycasts.CompProperties_PawnHolder" />
-      </value>
-    </match>
-  </Operation>
-
-  <Operation Class="PatchOperationConditional">
     <xpath>/Defs/ThingDef[@Name = "TreeBase"]/comps</xpath>
     <nomatch Class="PatchOperationAdd">
       <xpath>/Defs/ThingDef[@Name = "TreeBase"]</xpath>

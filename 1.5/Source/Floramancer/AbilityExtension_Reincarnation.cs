@@ -38,6 +38,12 @@ public class AbilityExtension_Reincarnation : AbilityExtension_AbilityMod
                                 continue;
                             }
 
+                            if (ability.pawn.GetFloramancerHediff() is not { } floramancerHediff)
+                            {
+                                Log.Error($"{nameof(AbilityExtension_Reincarnation)}.{nameof(Cast)}: Failed to get Hediff_Floramancer for {ability.pawn}.");
+                                continue;
+                            }
+
                             Pawn dryad = PawnGenerator.GeneratePawn(
                                 new PawnGenerationRequest(
                                     kind: dryadKind,
@@ -48,41 +54,24 @@ public class AbilityExtension_Reincarnation : AbilityExtension_AbilityMod
                                 )
                             );
 
-                            if (dryad.GetCompPawnHolder() is not { } holder)
+                            if (dryad.GetComp<CompCorpseHolder>() is not { } corpseHolder)
                             {
-                                Log.Error(
-                                    $"{nameof(AbilityExtension_Reincarnation)}.{nameof(Cast)}: Failed to get CompPawnHolder for dryad {dryad}."
-                                );
+                                Log.Error($"{nameof(AbilityExtension_Reincarnation)}.{nameof(Cast)}: Failed to get CompCorpseHolder for {dryad}.");
                                 continue;
                             }
 
                             IntVec3 position = corpse.Position;
                             Map map = corpse.Map;
-                            Pawn pawn = corpse.InnerPawn;
-                            ResurrectionParams parms = new()
+                            corpse.DeSpawn();
+
+                            if (!corpseHolder.TryAcceptCorpse(corpse))
                             {
-                                dontSpawn = true
-                            };
-                            if (!ResurrectionUtility.TryResurrect(pawn, parms))
-                            {
-                                Log.Error(
-                                    $"{nameof(AbilityExtension_Reincarnation)}.{nameof(Cast)}: Failed to resurrect corpse {pawn}."
-                                );
+                                Log.Error($"{nameof(AbilityExtension_Reincarnation)}.{nameof(Cast)}: Failed to accept corpse {corpse} into DryadReincarnation.");
                                 continue;
                             }
 
-                            if (!holder.TryAcceptThing(pawn))
-                            {
-                                Log.Error(
-                                    $"{nameof(AbilityExtension_Reincarnation)}.{nameof(Cast)}: Failed to accept corpse {pawn} into dryad holder."
-                                );
-                                continue;
-                            }
-
+                            floramancerHediff.dryads.Add(dryad);
                             dryad.connections?.ConnectTo(ability.pawn);
-                            Hediff_Floramancer hediff = ability.pawn.GetFloramancerHediff();
-                            hediff?.dryads.Add(dryad);
-
                             dryad.health.AddHediff(RPDefOf.RP_DryadReincarnation);
 
                             GenSpawn.Spawn(dryad, position, map).Rotation = Rot4.South;

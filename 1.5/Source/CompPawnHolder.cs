@@ -127,7 +127,7 @@ public class CompPawnHolder : ThingComp, IThingHolder
             text += "\n";
         }
 
-        return text + ("RP.Contains".Translate() + ": " + innerContainer.ContentsString);
+        return text + ("RP_Contains".Translate() + ": " + innerContainer.ContentsString);
     }
 }
 

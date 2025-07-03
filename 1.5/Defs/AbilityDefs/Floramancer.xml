@@ -290,9 +290,7 @@
         <psyfocusCost>0.02</psyfocusCost>
         <entropyGain>0</entropyGain>
       </li>
-      <li Class="RakazielPsycasts.Floramancer.AbilityExtension_Reincarnation">
-        <!-- <countdown>3600000</countdown> -->
-      </li>
+      <li Class="RakazielPsycasts.Floramancer.AbilityExtension_Reincarnation" />
     </modExtensions>
   </VFECore.Abilities.AbilityDef>
 

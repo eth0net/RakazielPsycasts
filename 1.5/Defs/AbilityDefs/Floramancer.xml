@@ -255,6 +255,9 @@
         <order>2</order>
         <psyfocusCost>0.02</psyfocusCost>
         <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>RP_AwakenDryad</li>
+        </prerequisites>
       </li>
       <li Class="RakazielPsycasts.Floramancer.AbilityExtension_AwakenTree" />
     </modExtensions>
@@ -289,6 +292,9 @@
         <order>1</order>
         <psyfocusCost>0.02</psyfocusCost>
         <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>RP_BranchingMind</li>
+        </prerequisites>
       </li>
       <li Class="RakazielPsycasts.Floramancer.AbilityExtension_Reincarnation" />
     </modExtensions>

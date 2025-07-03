@@ -44,22 +44,22 @@ public static class FloramancerUtils
 
     public static void TransformPawnToTree(this Pawn pawn, ThingDef treeDef)
     {
-        IntVec3 position = pawn.Position;
-        Map map = pawn.Map;
-
-        pawn.DeSpawn();
-
-        Thing tree = GenSpawn.Spawn(treeDef, position, map);
+        Thing tree = ThingMaker.MakeThing(treeDef);
         if (tree.GetCompPawnHolder() is not { } treeHolder)
         {
-            Log.Error($"{nameof(FloramancerUtils)}.{nameof(TransformPawnToTree)}: Failed to get CompPawnHolder for tree {tree} at position {position} on map {map}.");
+            Log.Error($"{nameof(FloramancerUtils)}.{nameof(TransformPawnToTree)}: Failed to get CompPawnHolder for tree {tree}.");
             return;
         }
 
         if (!treeHolder.TryAcceptThing(pawn))
         {
-            Log.Error($"{nameof(FloramancerUtils)}.{nameof(TransformPawnToTree)}: Failed to accept pawn {pawn} into tree holder at position {position} on map {map}.");
+            Log.Error($"{nameof(FloramancerUtils)}.{nameof(TransformPawnToTree)}: Failed to accept pawn {pawn} into tree holder.");
         }
+
+        IntVec3 position = pawn.Position;
+        Map map = pawn.Map;
+        pawn.DeSpawn();
+        GenSpawn.Spawn(tree, position, map);
     }
 
     public static void TransformTreeToPawn(this Plant tree, XenotypeDef phytokinKind)

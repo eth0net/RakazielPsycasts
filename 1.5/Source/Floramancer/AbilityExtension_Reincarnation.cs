@@ -32,6 +32,9 @@ public class AbilityExtension_Reincarnation : AbilityExtension_AbilityMod
                         {
                             if (target.Thing is not Corpse corpse)
                             {
+                                Log.Error(
+                                    $"{nameof(AbilityExtension_Reincarnation)}.{nameof(Cast)}: Target {target} is not a corpse."
+                                );
                                 continue;
                             }
 
@@ -44,33 +47,46 @@ public class AbilityExtension_Reincarnation : AbilityExtension_AbilityMod
                                     developmentalStages: DevelopmentalStage.Newborn
                                 )
                             );
-                            dryad.connections?.ConnectTo(ability.pawn);
-                            Hediff_Floramancer hediff = ability.pawn.GetFloramancerHediff();
-                            hediff?.dryads.Add(dryad);
-
-                            Map map = corpse.MapHeld;
-                            IntVec3 position = corpse.PositionHeld;
-
-                            corpse.DeSpawn();
-                            GenSpawn.Spawn(dryad, position, map).Rotation = Rot4.South;
-                            SoundDefOf.Pawn_Dryad_Spawn.PlayOneShot(SoundInfo.InMap(dryad));
 
                             if (dryad.GetCompPawnHolder() is not { } holder)
                             {
                                 Log.Error(
-                                    $"{nameof(AbilityExtension_Reincarnation)}.{nameof(Cast)}: Failed to get CompPawnHolder for dryad {dryad} at position {position} on map {map}."
+                                    $"{nameof(AbilityExtension_Reincarnation)}.{nameof(Cast)}: Failed to get CompPawnHolder for dryad {dryad}."
                                 );
                                 continue;
                             }
 
-                            if (!holder.TryAcceptThing(corpse.InnerPawn))
+                            IntVec3 position = corpse.Position;
+                            Map map = corpse.Map;
+                            Pawn pawn = corpse.InnerPawn;
+                            ResurrectionParams parms = new()
+                            {
+                                dontSpawn = true
+                            };
+                            if (!ResurrectionUtility.TryResurrect(pawn, parms))
                             {
                                 Log.Error(
-                                    $"{nameof(AbilityExtension_Reincarnation)}.{nameof(Cast)}: Failed to accept corpse {corpse.InnerPawn} into dryad holder at position {position} on map {map}."
+                                    $"{nameof(AbilityExtension_Reincarnation)}.{nameof(Cast)}: Failed to resurrect corpse {pawn}."
                                 );
+                                continue;
                             }
 
-                            corpse.Destroy();
+                            if (!holder.TryAcceptThing(pawn))
+                            {
+                                Log.Error(
+                                    $"{nameof(AbilityExtension_Reincarnation)}.{nameof(Cast)}: Failed to accept corpse {pawn} into dryad holder."
+                                );
+                                continue;
+                            }
+
+                            dryad.connections?.ConnectTo(ability.pawn);
+                            Hediff_Floramancer hediff = ability.pawn.GetFloramancerHediff();
+                            hediff?.dryads.Add(dryad);
+
+                            dryad.health.AddHediff(RPDefOf.RP_DryadReincarnation);
+
+                            GenSpawn.Spawn(dryad, position, map).Rotation = Rot4.South;
+                            SoundDefOf.Pawn_Dryad_Spawn.PlayOneShot(SoundInfo.InMap(dryad));
                         }
                     },
                     dryadCaste,
@@ -90,5 +106,30 @@ public class AbilityExtension_Reincarnation : AbilityExtension_AbilityMod
         {
             Find.WindowStack.Add(new FloatMenu(options));
         }
+    }
+
+    public override bool ValidateTarget(LocalTargetInfo target, Ability ability, bool throwMessages = false)
+    {
+        if (target.Thing is not Corpse corpse)
+        {
+            if (throwMessages)
+            {
+                Messages.Message("Target must be a valid corpse.", MessageTypeDefOf.RejectInput, false);
+            }
+
+            return false;
+        }
+
+        if (corpse.InnerPawn?.RaceProps is not { Humanlike: true })
+        {
+            if (throwMessages)
+            {
+                Messages.Message("Target corpse must be a humanlike pawn.", MessageTypeDefOf.RejectInput, false);
+            }
+
+            return false;
+        }
+
+        return base.ValidateTarget(target, ability, throwMessages);
     }
 }

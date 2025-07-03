@@ -8,6 +8,9 @@ namespace RakazielPsycasts;
 public class RPDefOf
 {
     [UsedImplicitly]
+    public static HediffDef RP_DryadReincarnation;
+
+    [UsedImplicitly]
     public static HediffDef RP_Floramancer;
 
     [UsedImplicitly]

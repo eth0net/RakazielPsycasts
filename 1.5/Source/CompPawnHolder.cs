@@ -43,8 +43,8 @@ public class CompPawnHolder : ThingComp, IThingHolder
         // if the thing is owned, try to transfer it
         if (thing.holdingOwner is { } owner)
         {
-            owner.TryTransferToContainer(thing, innerContainer, thing.stackCount);
-            return true;
+            int count = owner.TryTransferToContainer(thing, innerContainer, thing.stackCount);
+            return count > 0;
         }
 
         // if the thing is not owned, try to add it

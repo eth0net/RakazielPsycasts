@@ -267,11 +267,17 @@
     <description>Caster transforms a corpse into a dryad, starting the process of reincarnating the original being. If the dryad lives for 60 days the original being will return to life. If the dryad dies or becomes unbound the life is released and lost.</description>
     <!-- <iconPath>Abilities/Floramancer/Reincarnation</iconPath> -->
     <iconPath>Abilities/Carnomancer/Resurrect</iconPath>
-    <abilityClass>VFECore.Abilities.Ability_TargetCorpse</abilityClass>
+    <abilityClass>VFECore.Abilities.Ability_Blank</abilityClass>
     <castTime>60</castTime>
     <durationTime>300</durationTime>
     <showUndrafted>true</showUndrafted>
     <targetMode>Thing</targetMode>
+    <targetingParameters>
+      <canTargetItems>true</canTargetItems>
+      <thingCategory>Item</thingCategory>
+      <mapObjectTargetsMustBeAutoAttackable>False</mapObjectTargetsMustBeAutoAttackable>
+    </targetingParameters>
+    <reserveTargets>true</reserveTargets>
     <jobDef>VFEA_GotoTargetAndUseAbility</jobDef>
     <requireLineOfSight>false</requireLineOfSight>
     <range>999999</range>
@@ -285,7 +291,7 @@
         <entropyGain>0</entropyGain>
       </li>
       <li Class="RakazielPsycasts.Floramancer.AbilityExtension_Reincarnation">
-        <countdown>3600000</countdown>
+        <!-- <countdown>3600000</countdown> -->
       </li>
     </modExtensions>
   </VFECore.Abilities.AbilityDef>

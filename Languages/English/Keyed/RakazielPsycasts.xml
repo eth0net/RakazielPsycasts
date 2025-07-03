@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RP_ReincarnatedLetter>{PAWN_labelShort} has been reincarnated through a dryad.</RP_ReincarnatedLetter>
+  <RP_Reincarnated>Reincarnated</RP_Reincarnated>
+  <RP_Dryads>Dryads</RP_Dryads>
+  <RP_DryadsGizmoTip>A floramancer can only sustain a dryad if there is enough dryad capacity to do so. Gain more dryad capacity to sustain more dryads by casting branching mind, however bear in mind it will send the floramancer and all their dryads into a {0} coma.\n\nDryad capacity: {1}</RP_DryadsGizmoTip>
+  <RP_DryadUsage>Dryad usage</RP_DryadUsage>
+  <RP_Floramancer_NoDryadModes>No dryad modes available.</RP_Floramancer_NoDryadModes>
+  <RP_Floramancer_TargetNotTree>Target is not a tree.</RP_Floramancer_TargetNotTree>
+  <RP_Contains>Contains</RP_Contains>
+  <RP_Reincarnating>Reincarnating</RP_Reincarnating>
+  <RP_CancelLiberation>Cancel Liberation</RP_CancelLiberation>
+  <RP_CancelLiberationDesc>Cancel the liberation process.</RP_CancelLiberationDesc>
+  <RP_NotEnoughEntropy>Not enough entropy.</RP_NotEnoughEntropy>
+</LanguageData>

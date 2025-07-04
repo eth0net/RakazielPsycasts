@@ -1,6 +1,7 @@
 ﻿using JetBrains.Annotations;
 using RimWorld;
 using Verse;
+using AbilityDef = VFECore.Abilities.AbilityDef;
 
 namespace RakazielPsycasts;
 
@@ -45,4 +46,7 @@ public class RPDefOf
 
     [UsedImplicitly, MayRequireBiotech]
     public static XenotypeDef VRE_Poluxkin;
+
+    [UsedImplicitly]
+    public static AbilityDef RP_OneWithTheForest;
 }

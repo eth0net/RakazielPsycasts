@@ -19,4 +19,11 @@
     </match>
   </Operation>
 
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[@Name = "TreeBase"]</xpath>
+    <value>
+      <containedPawnsSelectable>true</containedPawnsSelectable>
+    </value>
+  </Operation>
+
 </Patch>

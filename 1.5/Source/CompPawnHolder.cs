@@ -31,24 +31,24 @@ public class CompPawnHolder : ThingComp, IThingHolder
         return innerContainer;
     }
 
-    public virtual bool Accepts(Thing thing)
+    public virtual bool Accepts(Pawn pawn)
     {
-        return innerContainer.CanAcceptAnyOf(thing);
+        return innerContainer.CanAcceptAnyOf(pawn);
     }
 
-    public virtual bool TryAcceptThing(Thing thing)
+    public virtual bool TryAcceptPawn(Pawn pawn)
     {
-        if (!Accepts(thing)) return false;
+        if (!Accepts(pawn)) return false;
 
-        // if the thing is owned, try to transfer it
-        if (thing.holdingOwner is { } owner)
+        // if the pawn is owned, try to transfer it
+        if (pawn.holdingOwner is { } owner)
         {
-            int count = owner.TryTransferToContainer(thing, innerContainer, thing.stackCount);
+            int count = owner.TryTransferToContainer(pawn, innerContainer, pawn.stackCount);
             return count > 0;
         }
 
-        // if the thing is not owned, try to add it
-        return innerContainer.TryAdd(thing);
+        // if the pawn is not owned, try to add it
+        return innerContainer.TryAdd(pawn);
     }
 
     public virtual void EjectContents()
@@ -127,7 +127,7 @@ public class CompPawnHolder : ThingComp, IThingHolder
             text += "\n";
         }
 
-        return text + ("RP_Contains".Translate() + ": " + innerContainer.ContentsString);
+        return text + ("RPContains".Translate() + ": " + innerContainer.ContentsString);
     }
 }
 

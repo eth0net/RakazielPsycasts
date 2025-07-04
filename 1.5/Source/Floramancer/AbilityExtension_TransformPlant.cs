@@ -90,7 +90,7 @@ public class AbilityExtension_TransformPlant : AbilityExtension_AbilityMod
         }
 
         // Check if any target holds a pawn
-        if (targets.Any(target => target.HasThing && target.Thing.GetCompPawnHolder().HoldsPawn))
+        if (targets.Any(target => target.HasThing && target.Thing.TryGetComp<CompPawnHolder>().HoldsPawn))
         {
             if (throwMessages)
             {

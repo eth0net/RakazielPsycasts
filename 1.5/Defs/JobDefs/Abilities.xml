@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <JobDef>
+    <defName>RP_InTreeOrGotoTargetAndUseAbility</defName>
+    <driverClass>RakazielPsycasts.Floramancer.JobDriver_InTreeOrGotoTargetAndCastAbilityOnce</driverClass>
+    <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+    <carryThingAfterJob>true</carryThingAfterJob>
+  </JobDef>
+
+</Defs>

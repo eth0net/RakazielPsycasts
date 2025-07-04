@@ -301,6 +301,43 @@
   </VFECore.Abilities.AbilityDef>
 
   <!-- 5 One with the Forest (Requires Branching Mind) - merges with a tree and can teleport to any other tree on the map. Teleports to the next tree in the scene asset list if its current tree is destroyed. Can leave at will. Jumps have a flat cost regardless of range. -->
+  <VFECore.Abilities.AbilityDef ParentName="VPE_PsycastBase">
+    <defName>RP_OneWithTheForest</defName>
+    <label>one with the forest</label>
+    <description>Caster merges with a tree and can teleport to any other tree on the map. Caster teleports to another tree on the map if the tree is destroyed. Caster can leave at will.</description>
+    <!-- <iconPath>Abilities/Floramancer/OneWithTheForest</iconPath> -->
+    <iconPath>Abilities/Carnomancer/Resurrect</iconPath>
+    <abilityClass>RakazielPsycasts.Floramancer.Ability_OneWithTheForest</abilityClass>
+    <castTime>60</castTime>
+    <durationTime>300</durationTime>
+    <showUndrafted>true</showUndrafted>
+    <targetMode>Thing</targetMode>
+    <targetingParameters>
+      <canTargetPawns>false</canTargetPawns>
+      <canTargetBuildings>false</canTargetBuildings>
+      <canTargetAnimals>false</canTargetAnimals>
+      <canTargetHumans>false</canTargetHumans>
+      <canTargetMechs>false</canTargetMechs>
+      <canTargetMutants>false</canTargetMutants>
+      <canTargetPlants>true</canTargetPlants>
+    </targetingParameters>
+    <jobDef>RP_InTreeOrGotoTargetAndUseAbility</jobDef>
+    <requireLineOfSight>false</requireLineOfSight>
+    <range>999999</range>
+    <distanceToTarget>1.9</distanceToTarget>
+    <modExtensions>
+      <li Class="VanillaPsycastsExpanded.AbilityExtension_Psycast">
+        <path>RP_Floramancer</path>
+        <level>5</level>
+        <order>2</order>
+        <psyfocusCost>0.02</psyfocusCost>
+        <entropyGain>0</entropyGain>
+        <prerequisites>
+          <li>RP_BranchingMind</li>
+        </prerequisites>
+      </li>
+    </modExtensions>
+  </VFECore.Abilities.AbilityDef>
 
   <!-- 5 Force of Nature (requires Awaken Tree) - melee attack, instakills anything technological. When used against someone organic, it destroys all their bionics. -->
 

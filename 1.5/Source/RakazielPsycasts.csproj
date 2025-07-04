@@ -1,12 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>net48</TargetFramework>
         <OutputType>Library</OutputType>
         <LangVersion>latest</LangVersion>
         <PackageId>RakazielPsycasts</PackageId>
+        <BaseOutputPath>..\Assemblies</BaseOutputPath>
         <OutputPath>../Assemblies/</OutputPath>
         <ReleasePath>../../Release</ReleasePath>
-        <ZipFilePath>../../$(PackageId).zip</ZipFilePath>
+        <ReleaseZipFilePath>../../$(PackageId)-Release.zip</ReleaseZipFilePath>
+        <SourceZipFilePath>../../$(PackageId)-Source.zip</SourceZipFilePath>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     </PropertyGroup>
@@ -16,6 +19,7 @@
         <DebugType>portable</DebugType>
         <Optimize>false</Optimize>
     </PropertyGroup>
+
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
         <DebugSymbols>false</DebugSymbols>
         <DebugType>none</DebugType>
@@ -58,10 +62,6 @@
             <HintPath>$(ManagedDir)/UnityEngine.TextRenderingModule.dll</HintPath>
             <Private>False</Private>
         </Reference>
-        <!-- <Reference Include="com.rlabrecque.steamworks.net">
-          <HintPath>$(ManagedDir)/com.rlabrecque.steamworks.net.dll</HintPath>
-          <Private>False</Private>
-        </Reference> -->
     </ItemGroup>
     <ItemGroup Condition="Exists('$(WorkshopDir)')">
         <Reference Include="VFECore">
@@ -135,17 +135,19 @@
     <!-- Copy release files to the release directory -->
     <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition=" '$(Configuration)' == 'Release' ">
         <ItemGroup>
-            <AboutFiles Include="../../About/**" Exclude="../../About/*.png~"/>
+            <AboutFiles Include="../../About/**"/>
             <DefsFiles Include="../../Defs/**"/>
             <LanguagesFiles Include="../../Languages/**"/>
             <PatchesFiles Include="../../Patches/**"/>
             <SoundsFiles Include="../../Sounds/**"/>
             <TexturesFiles Include="../../Textures/**"/>
-            <ExtraFiles Include="../../README.md"/>
+            <ExtraFiles Include="../../README.md;../../LICENSE"/>
             <ReleaseFiles Include="../../1.*/**" Exclude="../../1.*/Source/**"/>
+            <SourceFiles Include="../../1.*/Source/**;../../.editorconfig;../../.gitattributes;../../.gitignore;../../_PublisherPlus.xml"/>
         </ItemGroup>
         <RemoveDir Condition="Exists('$(ReleasePath)')" Directories="$(ReleasePath)"/>
-        <Delete Condition="Exists('$(ZipFilePath)')" Files="$(ZipFilePath)"/>
+        <Delete Condition="Exists('$(ReleaseZipFilePath)')" Files="$(ReleaseZipFilePath)"/>
+        <Delete Condition="Exists('$(SourceZipFilePath)')" Files="$(SourceZipFilePath)"/>
         <Copy SourceFiles="@(AboutFiles)" DestinationFiles="@(AboutFiles->'$(ReleasePath)/About/%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true"/>
         <!-- Use separate copy operations for each directory to ensure proper structure -->
         <Copy SourceFiles="@(DefsFiles)" DestinationFiles="@(DefsFiles->'$(ReleasePath)/Defs/%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true"/>
@@ -155,12 +157,16 @@
         <Copy SourceFiles="@(TexturesFiles)" DestinationFiles="@(TexturesFiles->'$(ReleasePath)/Textures/%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true"/>
         <Copy SourceFiles="@(ReleaseFiles)" DestinationFiles="@(ReleaseFiles->'$(ReleasePath)/%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="false"/>
         <Copy SourceFiles="@(ExtraFiles)" DestinationFolder="$(ReleasePath)/" SkipUnchangedFiles="false"/>
-        <ZipDirectory SourceDirectory="$(ReleasePath)" DestinationFile="$(ZipFilePath)"/>
+        <ZipDirectory SourceDirectory="$(ReleasePath)" DestinationFile="$(ReleaseZipFilePath)"/>
+        <Copy SourceFiles="@(SourceFiles)" DestinationFiles="@(SourceFiles->'$(ReleasePath)/%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true"/>
+        <ZipDirectory SourceDirectory="$(ReleasePath)" DestinationFile="$(SourceZipFilePath)"/>
+        <RemoveDir Condition="Exists('$(ReleasePath)')" Directories="$(ReleasePath)"/>
     </Target>
 
     <!-- Clean release artifacts -->
     <Target Name="CleanRelease" AfterTargets="Clean">
         <RemoveDir Condition="Exists('$(ReleasePath)')" Directories="$(ReleasePath)"/>
-        <Delete Condition="Exists('$(ZipFilePath)')" Files="$(ZipFilePath)"/>
+        <Delete Condition="Exists('$(ReleaseZipFilePath)')" Files="$(ReleaseZipFilePath)"/>
+        <Delete Condition="Exists('$(SourceZipFilePath)')" Files="$(SourceZipFilePath)"/>
     </Target>
 </Project>
